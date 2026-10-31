@@ -1,5 +1,5 @@
-import {randomInt} from '../browser/crypto.mjs?v=0a21d58ed01e';
-import {NF_COLORS,NF_TROOPS,NF_TACTICS,nfCard,nfLabel,nfValues} from '../public/nineflags-cards.js?v=0a21d58ed01e';
+import {randomInt} from '../browser/crypto.mjs?v=4d98d039a3c1';
+import {NF_COLORS,NF_TROOPS,NF_TACTICS,nfCard,nfLabel,nfValues} from '../public/nineflags-cards.js?v=4d98d039a3c1';
 const clone=x=>structuredClone(x),seatName=n=>n===1?'ユーザー':'あなた';
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=randomInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
 export const nfCapacity=f=>f.terrain.some(t=>t.id==='mud')?4:3;

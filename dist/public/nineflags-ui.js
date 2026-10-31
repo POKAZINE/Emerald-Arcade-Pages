@@ -1,7 +1,7 @@
-import {CF_COLORS,cfColor,cfValidateColors} from './connectfour-colors.js?v=0a21d58ed01e';
-import {NF_COLORS,NF_TACTICS,nfCard,nfColor,nfLabel,nfValues,nfTokenStats,nfRank} from './nineflags-cards.js?v=0a21d58ed01e';
-import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery,userNote,clearUserNote} from './yacht-ui.js?v=0a21d58ed01e';
-import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
+import {CF_COLORS,cfColor,cfValidateColors} from './connectfour-colors.js?v=4d98d039a3c1';
+import {NF_COLORS,NF_TACTICS,nfCard,nfColor,nfLabel,nfValues,nfTokenStats,nfRank} from './nineflags-cards.js?v=4d98d039a3c1';
+import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery,userNote,clearUserNote} from './yacht-ui.js?v=4d98d039a3c1';
+import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),tables=new Map();let audio,mobileMedia;
 function tile(id,token=null,last=false){const c=nfCard(id),a=token?nfTokenStats(token):c,co=nfColor(a.color);return '<span class="nf-card nf-color-'+(co?.id||'tactic')+' '+(c.type==='troop'?'nf-troop':co?'nf-wild':'nf-tactic')+(last?' nf-last-card':'')+'" title="'+esc((last?'直前の相手の操作対象：':'')+(co?co.name+a.value:nfLabel(id))+(c.help?'：'+c.help:''))+'"><span class="nf-card-corner">'+(co?co.symbol:c.symbol)+'</span><strong>'+esc(co?a.value:c.name)+'</strong><small class="nf-card-kind">'+(co?co.name+(c.type==='wild'?' · 万能':''):c.type==='terrain'?'地形':'戦術')+'</small>'+'</span>';}
 

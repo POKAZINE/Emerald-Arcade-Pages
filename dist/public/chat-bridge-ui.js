@@ -1,4 +1,4 @@
-import {chatGuidance} from './chat-guidance.js?v=0a21d58ed01e';
+import {chatGuidance} from './chat-guidance.js?v=4d98d039a3c1';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const drafts=new Map();let generation=0;
 export function renderChatBridge(s,api,refresh,toast){

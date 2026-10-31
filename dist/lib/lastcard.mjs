@@ -1,5 +1,5 @@
-import {groupEndColors,orderNumberGroup} from '../public/lastcard-selection.js?v=0a21d58ed01e';
-import {randomInt,randomUUID} from '../browser/crypto.mjs?v=0a21d58ed01e';
+import {groupEndColors,orderNumberGroup} from '../public/lastcard-selection.js?v=4d98d039a3c1';
+import {randomInt,randomUUID} from '../browser/crypto.mjs?v=4d98d039a3c1';
 export const LC_COLORS=['red','blue','green','yellow'];
 export const lcColor=c=>({red:'赤',blue:'青',green:'緑',yellow:'黄'})[c]||'';
 export const lcLabel=c=>c?`${lcColor(c.color)}${({skip:'スキップ',reverse:'リバース',draw2:'ドロー2',wild:'色変更',wild4:'ワイルドドロー4'})[c.kind]??c.number}`:'—';

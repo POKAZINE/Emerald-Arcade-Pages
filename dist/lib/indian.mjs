@@ -1,5 +1,5 @@
-import {randomInt} from '../browser/crypto.mjs?v=0a21d58ed01e';
-import {shuffledDeck} from './blackjack.mjs?v=0a21d58ed01e';
+import {randomInt} from '../browser/crypto.mjs?v=4d98d039a3c1';
+import {shuffledDeck} from './blackjack.mjs?v=4d98d039a3c1';
 export const INDIAN_RULES='1対1・各1枚。相手の札だけ見え、自分の札は見えません。ジョーカーなし52枚を毎ハンド独立にシャッフル。2<3<…<10<J<Q<K<A、スートの優劣なし、同ランクは引き分け。各100チップ、通常6ハンド／お試し2ハンド、最終所持枚数で勝敗。同数は引き分け、片方0枚でも終了。各ハンド参加料5枚（足りなければ残額）、先手は初回ランダム・以後交代。チェック／ベット10枚／コール／レイズ10枚（全体で1回まで）／フォールド。双方チェックかコールで数字比較、フォールドで相手勝ち。残額が足りない場合は双方が出せる額まで、余剰は返却。決着後はフォールドでも双方の札を公開。次ハンドはユーザーが開始。仮想チップのみ・追加購入や換金なし。';
 const value=c=>c.rank===1?14:c.rank;
 export function initialIndian(quick=false,first=randomInt(2)+1){if(![1,2].includes(first))throw Error('先手を確認してください。');return {game:'indian',humanColor:1,turn:1,playStyle:quick?'quick':'standard',handLimit:quick?2:6,handNumber:0,firstSeat:first,phase:'ready',stacks:{1:100,2:100},bets:{1:0,2:0},pot:0,currentBet:0,raises:0,checked:false,cards:{1:null,2:null},hands:[],actions:[],ruleVersion:'indian-headsup-v1'};}

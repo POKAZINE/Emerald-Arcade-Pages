@@ -1,5 +1,5 @@
-import {store,config,createGame,moveGame,view,rawGameContext,executeTool,patchDelivery,personaActionRequired,makeChatPrompt,parseChatReply,geisterIdentities,cfValidateColors,practiceMove} from './engine.mjs?v=0a21d58ed01e';
-import {registerPersona} from '../lib/personas.mjs?v=0a21d58ed01e';
+import {store,config,createGame,moveGame,view,rawGameContext,executeTool,patchDelivery,personaActionRequired,makeChatPrompt,parseChatReply,geisterIdentities,cfValidateColors,practiceMove} from './engine.mjs?v=4d98d039a3c1';
+import {registerPersona} from '../lib/personas.mjs?v=4d98d039a3c1';
 const settings=()=>Object.fromEntries(['title','subtitle','theme','sound','reducedMotion','volume','showExpressions','connectFourColors'].map(k=>[k,config[k]]));
 let queue=Promise.resolve();
 async function dispatch(route,method,b){

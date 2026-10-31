@@ -1,5 +1,5 @@
-import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery} from './yacht-ui.js?v=0a21d58ed01e';
-import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
+import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery} from './yacht-ui.js?v=4d98d039a3c1';
+import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),drafts=new Map();let audio,unlocked=false;
 function sound(settings,solved){if(!unlocked||!settings.sound||Number(settings.volume??.45)<=0)return;try{audio??=new AudioContext();audio.resume();for(const [i,f]of (solved?[523,659,784]:[540,620]).entries()){const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.08;o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(Number(settings.volume??.45)*.06,t);g.gain.exponentialRampToValueAtTime(.0001,t+.15);o.connect(g).connect(audio.destination);o.start(t);o.stop(t+.16);o.onended=()=>{o.disconnect();g.disconnect();};}}catch{}}
 export function bestfiveArt(){return `<div class="bf-home-notes" aria-hidden="true">${['01','02','03','04','05'].map((n,i)=>`<span><small>${n}</small><b>${['♡','✦','☕','♫','❋'][i]}</b></span>`).join('')}</div><span class="yacht-art-label">FIVE FAVORITES. YOUR OWN ORDER.</span>`;}

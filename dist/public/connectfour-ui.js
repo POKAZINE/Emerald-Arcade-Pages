@@ -1,6 +1,6 @@
-import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
-import {CF_COLORS,CF_DEFAULT_COLORS,cfPieceColors,cfColor} from './connectfour-colors.js?v=0a21d58ed01e';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=0a21d58ed01e';
+import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
+import {CF_COLORS,CF_DEFAULT_COLORS,cfPieceColors,cfColor} from './connectfour-colors.js?v=4d98d039a3c1';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=4d98d039a3c1';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tables=new Map();let audio;
 function unlock(){try{audio??=new AudioContext();audio.resume().catch(()=>{});}catch{}}

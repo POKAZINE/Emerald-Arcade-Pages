@@ -1,6 +1,6 @@
-import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery,userNote,clearUserNote,dieFace} from './yacht-ui.js?v=0a21d58ed01e';
-import {createDiceRollBuffer} from './dice-audio.js?v=0a21d58ed01e';
-import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
+import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery,userNote,clearUserNote,dieFace} from './yacht-ui.js?v=4d98d039a3c1';
+import {createDiceRollBuffer} from './dice-audio.js?v=4d98d039a3c1';
+import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),tables=new Map();let audio;
 const die=(n,hit=false)=>`<span class="ld-die ${hit?'ld-hit':''}" role="img" aria-label="${n}の目${hit?'・宣言の目':''}">${dieFace(n)}</span>`;
 export const liarsArt=()=>`<div class="ld-art-cup"><span>?</span></div><div class="ld-art-dice">${[3,5,4].map(n=>die(n)).join('')}</div><span class="yacht-art-label">A LITTLE BLUFF. A BIG REVEAL.</span>`;

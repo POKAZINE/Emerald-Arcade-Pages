@@ -1,6 +1,6 @@
-import {wordscaleSubmission} from './wordscale-send.js?v=0a21d58ed01e';
-import {recoveryPanel,bindRecovery} from './yacht-ui.js?v=0a21d58ed01e';
-import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
+import {wordscaleSubmission} from './wordscale-send.js?v=4d98d039a3c1';
+import {recoveryPanel,bindRecovery} from './yacht-ui.js?v=4d98d039a3c1';
+import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tables=new Map();let audio;
 export function wordscaleArt(){return '<div class="ws-art" aria-hidden="true"><span class="ws-bubble">そよ風</span><span class="ws-thread"></span><span class="ws-bubble">星空</span></div><span class="yacht-art-label">OUR WORDS, ONE SCALE.</span>';}
