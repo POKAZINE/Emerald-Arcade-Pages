@@ -1,0 +1,12 @@
+{
+  "name": "emerald-arcade-pages",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
