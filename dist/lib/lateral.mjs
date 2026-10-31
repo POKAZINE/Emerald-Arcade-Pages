@@ -1,5 +1,5 @@
-import {randomInt,randomUUID} from '../browser/crypto.mjs?v=4d98d039a3c1';
-import {lateralPuzzles,lateralTutorial,tutorialQuestions,lateralGenres} from './lateral-puzzles.mjs?v=4d98d039a3c1';
+import {randomInt,randomUUID} from '../browser/crypto.mjs?v=0a1f66bfb06f';
+import {lateralPuzzles,lateralTutorial,tutorialQuestions,lateralGenres} from './lateral-puzzles.mjs?v=0a1f66bfb06f';
 const copy=x=>structuredClone(x),now=()=>new Date().toISOString();
 const string=(v,max=800)=>{if(typeof v!=='string'||!v.trim()||v.length>max)throw Error('1〜'+max+'文字で入力してください。');return v.trim();};
 const meta=p=>({id:p.id,number:p.number,title:p.title,genre:p.genre,difficulty:p.difficulty});

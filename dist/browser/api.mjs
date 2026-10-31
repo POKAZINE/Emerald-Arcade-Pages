@@ -1,5 +1,6 @@
-import {store,config,createGame,moveGame,view,rawGameContext,executeTool,patchDelivery,personaActionRequired,makeChatPrompt,parseChatReply,geisterIdentities,cfValidateColors,practiceMove} from './engine.mjs?v=4d98d039a3c1';
-import {registerPersona} from '../lib/personas.mjs?v=4d98d039a3c1';
+import {store,config,createGame,moveGame,view,rawGameContext,executeTool,patchDelivery,personaActionRequired,makeChatPrompt,parseChatReply,geisterIdentities,cfValidateColors,practiceMove} from './engine.mjs?v=0a1f66bfb06f';
+import {chatFlow,assertRoundAdvance,assertReviewReply} from '../lib/chat-flow.mjs?v=0a1f66bfb06f';
+import {registerPersona} from '../lib/personas.mjs?v=0a1f66bfb06f';
 const settings=()=>Object.fromEntries(['title','subtitle','theme','sound','reducedMotion','volume','showExpressions','connectFourColors'].map(k=>[k,config[k]]));
 let queue=Promise.resolve();
 async function dispatch(route,method,b){
@@ -19,7 +20,7 @@ async function dispatch(route,method,b){
  if(action==='history')return store.history(id).map(view);
  if(action==='chat-prompt'){if(s.mode!=='nexus')throw Error('チャット対局で使用してください。');return makeChatPrompt(s,rawGameContext(s));}
  if(method!=='POST')throw Error('操作形式が異なります。');
- if(action==='move'){moveGame(id,b.move??b.index,'human',b.version,b.note);return practiceResult(id);}
+ if(action==='move'){assertRoundAdvance(s,b.move??b.index);moveGame(id,b.move??b.index,'human',b.version,b.note);return practiceResult(id);}
  if(action==='end'){if(s.status!=='playing')throw Error('対局は終了しています。');s.status='abandoned';s.endedAt=new Date().toISOString();store.update(s);return view(s);}
  if(action==='identities'){if(s.game!=='geister'||b.version!==s.version)throw Error('最新の対局を確認してください。');return {identities:geisterIdentities(s)};}
  if(action==='appearance'){if(s.game!=='connectfour'||s.status!=='playing'||s.turn!==s.humanColor||b.version!==s.version)throw Error('あなたの手番に変更してください。');cfValidateColors(b.userColor,b.personaColor);s.pieceColors={[s.humanColor]:b.userColor,[3-s.humanColor]:b.personaColor};store.update(s);config.connectFourColors={user:b.userColor,persona:b.personaColor};store.saveSettings(config);return view(s);}
@@ -28,10 +29,11 @@ async function dispatch(route,method,b){
   if(s.mode!=='nexus')throw Error('チャット対局で使用してください。');const reply=parseChatReply(b.text);
   if(reply.session_id!==id||reply.expected_version!==s.version)throw Error('別の対局、または古い返答です。最新状況をコピーしてください。');
   if(s.chatReplyVersion===s.version)throw Error('この版への返答は反映済みです。');
+  assertReviewReply(s,reply);
   let result;if(reply.move===null){if(personaActionRequired(s))throw Error('AIの手番です。moveが必要です。');result={action_applied:false};}
   else{if(!personaActionRequired(s))throw Error('今はAIの手番ではありません。');result=executeTool('gameapps_play_move',{session_id:id,room_id:s.roomId,expected_version:s.version,move:typeof reply.move==='string'?reply.move:JSON.stringify(reply.move)});}
   const latest=store.get(id);
-  if(result.action_applied!==false||reply.move===null){latest.chatReplyVersion=s.version;latest.chatFeedback=null;store.update(latest);patchDelivery(id,{status:'sent',message:personaActionRequired(latest)?'AIの手番が続きます。最新状況をもう一度コピーしてください。':'返答を反映しました。'},reply.comment);}
+  if(result.action_applied!==false||reply.move===null){latest.chatReplyVersion=chatFlow(s).reviewRequired&&latest.phase===s.phase?latest.version:s.version;latest.chatFeedback=null;store.update(latest);patchDelivery(id,{status:'sent',message:personaActionRequired(latest)?'AIの手番が続きます。最新状況をもう一度コピーしてください。':'返答を反映しました。'},reply.comment);}
   else{latest.chatFeedback={message:result.message,detail:result};store.update(latest);}
   return {...view(store.get(id)),chat_result:result};
  }

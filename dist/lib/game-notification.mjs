@@ -1,11 +1,11 @@
-import {liarsFacts} from './liars.mjs?v=4d98d039a3c1';
-import {indianHandFacts,INDIAN_REVIEW_INSTRUCTION} from './indian.mjs?v=4d98d039a3c1';
-import {personaActionRequired} from './mcp-progress.mjs?v=4d98d039a3c1';
-import {lastcardPersonaText,lastcardPrivacy} from './lastcard.mjs?v=4d98d039a3c1';
-import {wordscaleTopicChooser,wordscaleReferencePrivacy} from './wordscale.mjs?v=4d98d039a3c1';
-import {cfPieceColors,cfColor} from '../public/connectfour-colors.js?v=4d98d039a3c1';
-import {blackjackPublicFacts} from './blackjack.mjs?v=4d98d039a3c1';
-import {gameOutcome} from './game-outcome.mjs?v=4d98d039a3c1';
+import {liarsFacts} from './liars.mjs?v=0a1f66bfb06f';
+import {indianHandFacts,INDIAN_REVIEW_INSTRUCTION} from './indian.mjs?v=0a1f66bfb06f';
+import {personaActionRequired} from './mcp-progress.mjs?v=0a1f66bfb06f';
+import {lastcardPersonaText,lastcardPrivacy} from './lastcard.mjs?v=0a1f66bfb06f';
+import {wordscaleTopicChooser,wordscaleReferencePrivacy} from './wordscale.mjs?v=0a1f66bfb06f';
+import {cfPieceColors,cfColor} from '../public/connectfour-colors.js?v=0a1f66bfb06f';
+import {blackjackPublicFacts} from './blackjack.mjs?v=0a1f66bfb06f';
+import {gameOutcome} from './game-outcome.mjs?v=0a1f66bfb06f';
 export const NOTIFICATION_FORMAT='compact-v2';
 export function commentaryInstruction(s){
  return s.testCommentary?'【テスト用・一手のひとこと】盤面を確認して着手し、成功後に「今回そのマスを選んだ理由」と「ユーザーの直前の手への感想」をそれぞれ短く話してください。座標や実際に裏返った石など、確認できる盤面上の事実に基づいて1〜3文で説明してください。ユーザーがまだ指していない場合は感想を省いてください。理由がはっきりしない場合は無理に作らず、その旨を伝えてください。':'';

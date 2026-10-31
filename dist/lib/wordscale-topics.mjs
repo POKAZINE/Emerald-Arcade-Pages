@@ -1,4 +1,4 @@
-import {randomInt} from '../browser/crypto.mjs?v=4d98d039a3c1';
+import {randomInt} from '../browser/crypto.mjs?v=0a1f66bfb06f';
 
 // Independently written topics, scales and practice examples for Emerald Arcade.
 export const scaleTopics=[

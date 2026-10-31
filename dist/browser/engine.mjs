@@ -1,42 +1,43 @@
-import {BrowserStore} from './store.mjs?v=4d98d039a3c1';
-import {randomUUID} from './crypto.mjs?v=4d98d039a3c1';
-import {makeChatPrompt,parseChatReply} from '../lib/chat-bridge.mjs?v=4d98d039a3c1';
-import {initialLiars,applyLiars,liarsView,liarsContext,liarsBotMove} from '../lib/liars.mjs?v=4d98d039a3c1';
-import {initialNineflags,applyNineflags,nineflagsView,nineflagsContext,nineflagsBotMove} from '../lib/nineflags.mjs?v=4d98d039a3c1';
-import {initialQuartet,applyQuartet,quartetView,quartetContext,quartetBotMove} from '../lib/quartet.mjs?v=4d98d039a3c1';
-import {APP_NAME} from '../public/branding.js?v=4d98d039a3c1';
-import {initialParaphrase,applyParaphrase,paraphraseView,paraphraseContext,paraphraseBotMove} from '../lib/paraphrase.mjs?v=4d98d039a3c1';
-import {initialBestfive,applyBestfive,bestfiveView,bestfiveContext,bestfiveBotMove} from '../lib/bestfive.mjs?v=4d98d039a3c1';
-import {initialIndian,applyIndian,indianView,indianContext,indianBotMove} from '../lib/indian.mjs?v=4d98d039a3c1';
-import {expressionName} from '../public/persona-expression.js?v=4d98d039a3c1';
-import {initialGeister,applyGeister,geisterView,geisterContext,geisterBotMove,geisterIdentities} from '../lib/geister.mjs?v=4d98d039a3c1';
-import {initialLateral,applyLateral,lateralView,lateralContext,lateralPracticeMove} from '../lib/lateral.mjs?v=4d98d039a3c1';
-import {toolDefinitions} from '../lib/mcp-tools.mjs?v=4d98d039a3c1';
-import {personaActionRequired,withMcpProgress,unconfirmedOperation,shouldRepairOperation} from '../lib/mcp-progress.mjs?v=4d98d039a3c1';
-import {initialLastcard,applyLastcard,lastcardView,lastcardContext,lastcardBotAction} from '../lib/lastcard.mjs?v=4d98d039a3c1';
-import {initialWordscale,applyWordscale,wordscaleView,wordscaleContext,wordscaleBotMove} from '../lib/wordscale.mjs?v=4d98d039a3c1';
-import {beginNotification,completeNotification} from '../lib/notification-metrics.mjs?v=4d98d039a3c1';
-import {initialMancala,applyMancala,mancalaView,mancalaContext,mancalaBotMove} from '../lib/mancala.mjs?v=4d98d039a3c1';
-import {connectionURL,normalizeRooms,setupStatus,setupDiagnostic} from '../lib/connection-setup.mjs?v=4d98d039a3c1';
-import {initialDaifugo,applyDaifugo,daifugoView,daifugoContext,daifugoBotMove} from '../lib/daifugo.mjs?v=4d98d039a3c1';
-import {initialTexas,applyTexas,texasView,texasContext,texasBotMove} from '../lib/texas.mjs?v=4d98d039a3c1';
-import {cfValidateColors} from '../public/connectfour-colors.js?v=4d98d039a3c1';
-import {initialConnectFour,applyConnectFour,connectFourView,connectFourContext,connectFourBotMove} from '../lib/connectfour.mjs?v=4d98d039a3c1';
-import {initialHitBlow,applyHitBlow,hitBlowView,hitBlowContext,hitBlowBotMove,hitBlowDuplicate} from '../lib/hitblow.mjs?v=4d98d039a3c1';
-import {initialBlackjack,prepareQuickBlackjack,applyBlackjack,blackjackView,blackjackContext,blackjackBotMove,completePreparedDeal,collectBlackjackNote} from '../lib/blackjack.mjs?v=4d98d039a3c1';
-import {initialBoard,applyMove,view as reversiView,coordinate,parseMove,legalMoves,flips} from '../lib/reversi.mjs?v=4d98d039a3c1';
-import {initialYacht,applyYacht,yachtView,yachtContext,yachtBotMove} from '../lib/yacht.mjs?v=4d98d039a3c1';
-import {yachtScoreReview} from '../lib/yacht-score-review.mjs?v=4d98d039a3c1';
-import {normalizeArguments,requireArguments} from '../lib/mcp-arguments.mjs?v=4d98d039a3c1';
-import {gameNotification,commentaryInstruction,NOTIFICATION_FORMAT} from '../lib/game-notification.mjs?v=4d98d039a3c1';
-import {gameOutcome} from '../lib/game-outcome.mjs?v=4d98d039a3c1';
-import {failureMessage,recoveryMessage} from '../lib/connection-recovery.mjs?v=4d98d039a3c1';
+import {BrowserStore} from './store.mjs?v=0a1f66bfb06f';
+import {randomUUID} from './crypto.mjs?v=0a1f66bfb06f';
+import {chatFlow,assertRoundAdvance,assertReviewReply} from '../lib/chat-flow.mjs?v=0a1f66bfb06f';
+import {makeChatPrompt,parseChatReply} from '../lib/chat-bridge.mjs?v=0a1f66bfb06f';
+import {initialLiars,applyLiars,liarsView,liarsContext,liarsBotMove} from '../lib/liars.mjs?v=0a1f66bfb06f';
+import {initialNineflags,applyNineflags,nineflagsView,nineflagsContext,nineflagsBotMove} from '../lib/nineflags.mjs?v=0a1f66bfb06f';
+import {initialQuartet,applyQuartet,quartetView,quartetContext,quartetBotMove} from '../lib/quartet.mjs?v=0a1f66bfb06f';
+import {APP_NAME} from '../public/branding.js?v=0a1f66bfb06f';
+import {initialParaphrase,applyParaphrase,paraphraseView,paraphraseContext,paraphraseBotMove} from '../lib/paraphrase.mjs?v=0a1f66bfb06f';
+import {initialBestfive,applyBestfive,bestfiveView,bestfiveContext,bestfiveBotMove} from '../lib/bestfive.mjs?v=0a1f66bfb06f';
+import {initialIndian,applyIndian,indianView,indianContext,indianBotMove} from '../lib/indian.mjs?v=0a1f66bfb06f';
+import {expressionName} from '../public/persona-expression.js?v=0a1f66bfb06f';
+import {initialGeister,applyGeister,geisterView,geisterContext,geisterBotMove,geisterIdentities} from '../lib/geister.mjs?v=0a1f66bfb06f';
+import {initialLateral,applyLateral,lateralView,lateralContext,lateralPracticeMove} from '../lib/lateral.mjs?v=0a1f66bfb06f';
+import {toolDefinitions} from '../lib/mcp-tools.mjs?v=0a1f66bfb06f';
+import {personaActionRequired,withMcpProgress,unconfirmedOperation,shouldRepairOperation} from '../lib/mcp-progress.mjs?v=0a1f66bfb06f';
+import {initialLastcard,applyLastcard,lastcardView,lastcardContext,lastcardBotAction} from '../lib/lastcard.mjs?v=0a1f66bfb06f';
+import {initialWordscale,applyWordscale,wordscaleView,wordscaleContext,wordscaleBotMove} from '../lib/wordscale.mjs?v=0a1f66bfb06f';
+import {beginNotification,completeNotification} from '../lib/notification-metrics.mjs?v=0a1f66bfb06f';
+import {initialMancala,applyMancala,mancalaView,mancalaContext,mancalaBotMove} from '../lib/mancala.mjs?v=0a1f66bfb06f';
+import {connectionURL,normalizeRooms,setupStatus,setupDiagnostic} from '../lib/connection-setup.mjs?v=0a1f66bfb06f';
+import {initialDaifugo,applyDaifugo,daifugoView,daifugoContext,daifugoBotMove} from '../lib/daifugo.mjs?v=0a1f66bfb06f';
+import {initialTexas,applyTexas,texasView,texasContext,texasBotMove} from '../lib/texas.mjs?v=0a1f66bfb06f';
+import {cfValidateColors} from '../public/connectfour-colors.js?v=0a1f66bfb06f';
+import {initialConnectFour,applyConnectFour,connectFourView,connectFourContext,connectFourBotMove} from '../lib/connectfour.mjs?v=0a1f66bfb06f';
+import {initialHitBlow,applyHitBlow,hitBlowView,hitBlowContext,hitBlowBotMove,hitBlowDuplicate} from '../lib/hitblow.mjs?v=0a1f66bfb06f';
+import {initialBlackjack,prepareQuickBlackjack,applyBlackjack,blackjackView,blackjackContext,blackjackBotMove,completePreparedDeal,collectBlackjackNote} from '../lib/blackjack.mjs?v=0a1f66bfb06f';
+import {initialBoard,applyMove,view as reversiView,coordinate,parseMove,legalMoves,flips} from '../lib/reversi.mjs?v=0a1f66bfb06f';
+import {initialYacht,applyYacht,yachtView,yachtContext,yachtBotMove} from '../lib/yacht.mjs?v=0a1f66bfb06f';
+import {yachtScoreReview} from '../lib/yacht-score-review.mjs?v=0a1f66bfb06f';
+import {normalizeArguments,requireArguments} from '../lib/mcp-arguments.mjs?v=0a1f66bfb06f';
+import {gameNotification,commentaryInstruction,NOTIFICATION_FORMAT} from '../lib/game-notification.mjs?v=0a1f66bfb06f';
+import {gameOutcome} from '../lib/game-outcome.mjs?v=0a1f66bfb06f';
+import {failureMessage,recoveryMessage} from '../lib/connection-recovery.mjs?v=0a1f66bfb06f';
 const store=await BrowserStore.open();
 const defaults={title:APP_NAME,subtitle:'ChatGPT・Claude・Geminiと、コピー＆貼り付けで遊ぼう。',theme:'system',sound:false,reducedMotion:false,showExpressions:true,volume:.45,nexusUrl:'manual-chat'};
 const config={...defaults,...store.settings()};
 const privateLateral={get(){throw Error('私用問題はこの版では使用しません。');}};
 const jobs=new Map();const saveConfig=()=>store.saveSettings(config);const broadcast=()=>{};function schedule(){}
-const view=s=>s.game==='liars'?liarsView(s):s.game==='nineflags'?nineflagsView(s):s.game==='quartet'?quartetView(s):s.game==='paraphrase'?paraphraseView(s):s.game==='bestfive'?bestfiveView(s):s.game==='indian'?indianView(s):s.game==='geister'?geisterView(s):s.game==='lateral'?lateralView(s):s.game==='lastcard'?lastcardView(s):s.game==='wordscale'?wordscaleView(s):s.game==='mancala'?mancalaView(s):s.game==='daifugo'?daifugoView(s):s.game==='texas'?texasView(s):s.game==='connectfour'?connectFourView(s):s.game==='hitblow'?hitBlowView(s):s.game==='blackjack'?blackjackView(s):s.game==='yacht'?yachtView(s):reversiView(s);
+const view=s=>({...(s.game==='liars'?liarsView(s):s.game==='nineflags'?nineflagsView(s):s.game==='quartet'?quartetView(s):s.game==='paraphrase'?paraphraseView(s):s.game==='bestfive'?bestfiveView(s):s.game==='indian'?indianView(s):s.game==='geister'?geisterView(s):s.game==='lateral'?lateralView(s):s.game==='lastcard'?lastcardView(s):s.game==='wordscale'?wordscaleView(s):s.game==='mancala'?mancalaView(s):s.game==='daifugo'?daifugoView(s):s.game==='texas'?texasView(s):s.game==='connectfour'?connectFourView(s):s.game==='hitblow'?hitBlowView(s):s.game==='blackjack'?blackjackView(s):s.game==='yacht'?yachtView(s):reversiView(s)),chatReplyVersion:s.chatReplyVersion,chatReviewRequired:chatFlow(s).reviewRequired});
 function gameContext(s){return withMcpProgress(s,rawGameContext(s));}
 function rawGameContext(s){if(s.game==='liars')return {...liarsContext(s),outcome:gameOutcome(s)};if(s.game==='nineflags')return {...nineflagsContext(s),outcome:gameOutcome(s)};if(s.game==='quartet')return {...quartetContext(s),outcome:gameOutcome(s)};if(s.game==='paraphrase')return {...paraphraseContext(s),outcome:gameOutcome(s)};if(s.game==='bestfive')return {...bestfiveContext(s),outcome:gameOutcome(s)};if(s.game==='indian')return {...indianContext(s),outcome:gameOutcome(s)};if(s.game==='geister')return {...geisterContext(s),outcome:gameOutcome(s)};if(s.game==='lateral')return {...lateralContext(s),outcome:gameOutcome(s)};if(s.game==='lastcard')return {...lastcardContext(s),outcome:gameOutcome(s)};if(s.game==='wordscale')return wordscaleContext(s);if(s.game==='mancala')return {...mancalaContext(s),outcome:gameOutcome(s)};if(s.game==='daifugo')return {...daifugoContext(s),outcome:gameOutcome(s)};if(s.game==='texas')return {...texasContext(s),outcome:gameOutcome(s)};if(s.game==='connectfour')return {...connectFourContext(s),outcome:gameOutcome(s)};if(s.game==='hitblow')return {...hitBlowContext(s),outcome:gameOutcome(s)};if(s.game==='blackjack')return {...blackjackContext(s),outcome:gameOutcome(s)};if(s.game==='yacht')return {...yachtContext(s,s.lastHumanTurn===undefined?store.history(s.id):[]),outcome:gameOutcome(s)};return {session_id:s.id,game:'reversi',room_id:s.roomId,version:s.version,status:s.status,outcome:gameOutcome(s),turn:s.status!=='playing'?null:s.turn===s.humanColor?'user':'persona',persona_color:s.humanColor===1?'white':'black',board:s.board.reduce((rows,_,i)=>{if(i%8===0)rows.push(s.board.slice(i,i+8).map(v=>'.BW'[v]).join(''));return rows;},[]),legal_moves:s.status==='playing'?legalMoves(s.board,s.turn).map(coordinate):[],last_move:s.lastMove,rules:'8×8のリバーシ。黒が先手。縦横斜めに相手の石を挟んで裏返す。置けなければ自動パス。双方置けなくなれば終了し石の多い側が勝ち。',instructions:s.status==='finished'?gameOutcome(s).message:'あなたは対局者です。Emerald Arcadeはchessカテゴリではなくcustomカテゴリの拡張ツールです。必要なら request_capability(category=custom) で取得してください。NexusArkのMCP中継では、すべての引数を input_args 辞書にまとめて呼び出してください。トップレベルに直接置くと中継で引数が失われます。自分の手番に最新のsession_id、room_id、versionを使い gameapps_play_move({input_args:{session_id:対局ID,room_id:ルームID,expected_version:version,move:合法手}}) を呼びます。操作結果を受けて会話してください。'+(s.testCommentary?'\n'+commentaryInstruction(s):'')};}
 function createGame(b){
@@ -64,6 +65,7 @@ function createGame(b){
 }
 function moveGame(id,index,actor,expectedVersion,note=''){
   const before=store.get(id);if(['liars','nineflags','quartet','paraphrase','bestfive','indian','geister','lateral','lastcard','wordscale'].includes(before.game)&&actor==='human'&&jobs.has(id))throw Error('相手の返答が終わってから操作してください。');if(!Number.isInteger(expectedVersion)||expectedVersion!==before.version)throw Error('盤面が更新されています。最新の盤面を確認してください。');
+  if(actor==='human')assertRoundAdvance(before,index);
   if(typeof note!=='string'||note.length>500)throw Error('一言は500文字以内で入力してください。');
   let after=before.game==='liars'?applyLiars(before,index,actor):before.game==='nineflags'?applyNineflags(before,index,actor):before.game==='quartet'?applyQuartet(before,index,actor):before.game==='paraphrase'?applyParaphrase(before,index,actor):before.game==='bestfive'?applyBestfive(before,index,actor):before.game==='indian'?applyIndian(before,index,actor):before.game==='geister'?applyGeister(before,index,actor):before.game==='lateral'?applyLateral(before,index,actor):before.game==='lastcard'?applyLastcard(before,index,actor):before.game==='wordscale'?applyWordscale(before,index,actor):before.game==='mancala'?applyMancala(before,index,actor):before.game==='daifugo'?applyDaifugo(before,index,actor):before.game==='texas'?applyTexas(before,index,actor):before.game==='connectfour'?applyConnectFour(before,index,actor):before.game==='hitblow'?applyHitBlow(before,index,actor):before.game==='blackjack'?applyBlackjack(before,index,actor):before.game==='yacht'?applyYacht(before,index,actor):applyMove(before,index,actor);
   const humanTurn=actor==='human'&&(after.game!=='yacht'||after.lastMove.action==='score');

@@ -1,6 +1,6 @@
-import {randomInt} from '../browser/crypto.mjs?v=4d98d039a3c1';
-import {paraphraseWords} from './paraphrase-words.mjs?v=4d98d039a3c1';
-import {maskExplanation,normalizeAnswer} from '../public/paraphrase-text.js?v=4d98d039a3c1';
+import {randomInt} from '../browser/crypto.mjs?v=0a1f66bfb06f';
+import {paraphraseWords} from './paraphrase-words.mjs?v=0a1f66bfb06f';
+import {maskExplanation,normalizeAnswer} from '../public/paraphrase-text.js?v=0a1f66bfb06f';
 const copy=x=>structuredClone(x),now=()=>new Date().toISOString();
 function text(v){if(typeof v!=='string'||!v.trim()||v.length>4000)throw Error('説明・回答を入力してください（保存上限4000文字）。');return v.trim();}
 function deal(s){const pool=paraphraseWords.filter(w=>!s.used.includes(w.id));if(!pool.length)throw Error('お題を使い切りました。');s.secret=copy(pool[randomInt(pool.length)]);s.used.push(s.secret.id);s.clues=[];s.guesses=[];s.phase='explain';s.turn=s.explainer;s.event='説明役が、別のことばで伝える準備をしています。';}

@@ -1,5 +1,6 @@
-import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
-import {createDiceRollBuffer} from './dice-audio.js?v=4d98d039a3c1';
+import {chatFlow} from '../lib/chat-flow.mjs?v=0a1f66bfb06f';
+import {bindResultShare} from './result-share.js?v=0a1f66bfb06f';
+import {createDiceRollBuffer} from './dice-audio.js?v=0a1f66bfb06f';
 const noteDrafts=new Map(),replyStates=new Map();let noteFocus=null;
 function stored(key){try{return sessionStorage.getItem(key);}catch{return null;}}
 function saveLocal(key,value){try{sessionStorage.setItem(key,value);}catch{}}
@@ -16,7 +17,7 @@ export function bindConversation(s){
  const input=$('#game-user-note');if(input){input.oninput=()=>{noteDrafts.set(s.id,input.value);saveLocal('gameapps-note:'+s.id,input.value);};if(noteFocus?.id===s.id){input.focus({preventScroll:true});input.setSelectionRange(noteFocus.start,noteFocus.end);}}
  noteFocus=null;
 }
-export function recoveryPanel(s){return '<p class="small muted">返答を反映できないときは、上の状況文をもう一度コピーしてAIへ送ってください。対局は保存されています。</p>';
+export function recoveryPanel(s){if(!chatFlow(s).replyRequired)return '';return '<p class="small muted">返答を反映できないときは、上の状況文をもう一度コピーしてAIへ送ってください。対局は保存されています。</p>';
  if(s.mode!=='nexus'||s.status==='abandoned')return '';
  const d=s.delivery,problem=['error','action_required'].includes(d.status),pending=d.status==='pending';
  const canResume=(d.recoveryReady||d.status==='action_required')&&((s.status==='playing'&&s.turn!==s.humanColor)||(s.status==='finished'&&!s.resultNotified));

@@ -1,6 +1,6 @@
-import {ghostSvg,ghostKindName} from './geister-pieces.js?v=4d98d039a3c1';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=4d98d039a3c1';
-import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
+import {ghostSvg,ghostKindName} from './geister-pieces.js?v=0a1f66bfb06f';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=0a1f66bfb06f';
+import {bindResultShare} from './result-share.js?v=0a1f66bfb06f';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),tables=new Map();let audio;
 const square=i=>'ABCDEF'[i%6]+(Math.floor(i/6)+1),index=s=>(Number(s[1])-1)*6+'ABCDEF'.indexOf(s[0]);
 function unlock(){try{audio??=new AudioContext();audio.resume().catch(()=>{});}catch{}}
@@ -38,4 +38,5 @@ export function renderGeister(args){
  if(t.capture){const dialog=$('#gt-effect-dialog');dialog?.classList.toggle('gt-paused',document.hidden);if(dialog)dialog.oncancel=e=>{e.preventDefault();t.next();};document.body.classList.add('gt-effect-open');if(t.soundPending){pop(settings,t.capture.captured.kind);t.soundPending=false;}if(!t.timer&&!document.hidden){t.deadline=Date.now()+t.remaining;t.timer=setTimeout(t.next,t.remaining);}$('#gt-skip-effect')?.focus({preventScroll:true});}else document.body.classList.remove('gt-effect-open');
  if(t.animate&&!reduced){const m=t.animate,el=$('#gt-cell-'+m.to+' .gt-ghost'),from=$('#gt-cell-'+m.from),to=$('#gt-cell-'+m.to);if(el&&from&&to){const a=from.getBoundingClientRect(),b=to.getBoundingClientRect();el.animate([{transform:'translate('+(a.left-b.left)+'px,'+(a.top-b.top)+'px) scale(.94)'},{transform:'translate(0,-5px) scale(1.03)',offset:.8},{transform:'translate(0,0) scale(1)'}],{duration:400,easing:'cubic-bezier(.2,.7,.3,1)'});}t.animate=null;}
  bindRecovery(s,api,refresh,toast);bindConversation(s);if(!t.capture)bindResultShare(s,settings);if(focused?.startsWith('gt-cell-')&&!t.capture)document.getElementById(focused)?.focus({preventScroll:true});
+ args.afterRender?.();
 }

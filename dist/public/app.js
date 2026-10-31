@@ -1,43 +1,106 @@
-import {browserApi} from '../browser/api.mjs?v=4d98d039a3c1';
-import {renderChatBridge} from './chat-bridge-ui.js?v=4d98d039a3c1';
-import {renderLiars,liarsRules,liarsArt} from './liars-ui.js?v=4d98d039a3c1';
-import {renderNineflags,nineflagsRules,nineflagsArt} from './nineflags-ui.js?v=4d98d039a3c1';
-import {renderQuartet,quartetRules,quartetArt} from './quartet-ui.js?v=4d98d039a3c1';
-import {APP_NAME,BANNER_SUBTITLE} from './branding.js?v=4d98d039a3c1';
-import {initPrivateLateral,resetPrivateLateralStart} from './lateral-private-ui.js?v=4d98d039a3c1';
-import {renderParaphrase,paraphraseRules,paraphraseArt} from './paraphrase-ui.js?v=4d98d039a3c1';
-import {renderBestfive,bestfiveRules,bestfiveArt} from './bestfive-ui.js?v=4d98d039a3c1';
-import {renderIndian,indianRules,indianArt} from './indian-ui.js?v=4d98d039a3c1';
-import {renderGeister,geisterRules,geisterArt} from './geister-ui.js?v=4d98d039a3c1';
-import {renderLateral,lateralRules,lateralArt} from './lateral-ui.js?v=4d98d039a3c1';
-import {renderLastcard,lastcardRules,lastcardArt} from './lastcard-ui.js?v=4d98d039a3c1';
-import {renderWordscale,wordscaleRules,wordscaleArt} from './wordscale-ui.js?v=4d98d039a3c1';
-import {renderMancala,mancalaRules,mancalaArt} from './mancala-ui.js?v=4d98d039a3c1';
-import {initConnectionSetup,setupHomeCard,bindSetupButtons,openConnectionSetup,restoreSetupHomeNotice} from './connection-setup-ui.js?v=4d98d039a3c1';
-import {renderDaifugo,daifugoRules,daifugoArt} from './daifugo-ui.js?v=4d98d039a3c1';
-import {renderTexas,texasRules,texasArt} from './texas-ui.js?v=4d98d039a3c1';
-import {bindResultShare} from './result-share.js?v=4d98d039a3c1';
-import {cfPieceColors,cfColor} from './connectfour-colors.js?v=4d98d039a3c1';
-import {renderConnectFour,connectFourRules,connectFourArt} from './connectfour-ui.js?v=4d98d039a3c1';
-import {renderHitBlow,hitBlowRules,hitBlowArt} from './hitblow-ui.js?v=4d98d039a3c1';
-import {renderBlackjack,blackjackRules,playingCard} from './blackjack-ui.js?v=4d98d039a3c1';
-import {renderYacht,yachtRules,dieFace,captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=4d98d039a3c1';
+import {browserApi} from '../browser/api.mjs?v=0a1f66bfb06f';
+import {renderChatBridge} from './chat-bridge-ui.js?v=0a1f66bfb06f';
+import {renderLiars,liarsRules,liarsArt} from './liars-ui.js?v=0a1f66bfb06f';
+import {renderNineflags,nineflagsRules,nineflagsArt} from './nineflags-ui.js?v=0a1f66bfb06f';
+import {renderQuartet,quartetRules,quartetArt} from './quartet-ui.js?v=0a1f66bfb06f';
+import {APP_NAME,BANNER_SUBTITLE} from './branding.js?v=0a1f66bfb06f';
+import {initPrivateLateral,resetPrivateLateralStart} from './lateral-private-ui.js?v=0a1f66bfb06f';
+import {renderParaphrase,paraphraseRules,paraphraseArt} from './paraphrase-ui.js?v=0a1f66bfb06f';
+import {renderBestfive,bestfiveRules,bestfiveArt} from './bestfive-ui.js?v=0a1f66bfb06f';
+import {renderIndian,indianRules,indianArt} from './indian-ui.js?v=0a1f66bfb06f';
+import {renderGeister,geisterRules,geisterArt} from './geister-ui.js?v=0a1f66bfb06f';
+import {renderLateral,lateralRules,lateralArt} from './lateral-ui.js?v=0a1f66bfb06f';
+import {renderLastcard,lastcardRules,lastcardArt} from './lastcard-ui.js?v=0a1f66bfb06f';
+import {renderWordscale,wordscaleRules,wordscaleArt} from './wordscale-ui.js?v=0a1f66bfb06f';
+import {renderMancala,mancalaRules,mancalaArt} from './mancala-ui.js?v=0a1f66bfb06f';
+import {initConnectionSetup,setupHomeCard,bindSetupButtons,openConnectionSetup,restoreSetupHomeNotice} from './connection-setup-ui.js?v=0a1f66bfb06f';
+import {renderDaifugo,daifugoRules,daifugoArt} from './daifugo-ui.js?v=0a1f66bfb06f';
+import {renderTexas,texasRules,texasArt} from './texas-ui.js?v=0a1f66bfb06f';
+import {bindResultShare} from './result-share.js?v=0a1f66bfb06f';
+import {cfPieceColors,cfColor} from './connectfour-colors.js?v=0a1f66bfb06f';
+import {renderConnectFour,connectFourRules,connectFourArt} from './connectfour-ui.js?v=0a1f66bfb06f';
+import {renderHitBlow,hitBlowRules,hitBlowArt} from './hitblow-ui.js?v=0a1f66bfb06f';
+import {renderBlackjack,blackjackRules,playingCard} from './blackjack-ui.js?v=0a1f66bfb06f';
+import {renderYacht,yachtRules,dieFace,captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=0a1f66bfb06f';
 const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Relative estimates for a full persona game; revise together as the catalog grows.
-const aiUsageEstimates={liars:{label:'中程度・幅あり',reason:'通常最大4ラウンド・お試し1ラウンド。宣言の応酬とダウト後の会話で本体を利用します。レイズは宣言と同じ操作にまとめ、配骰・集計・精算はAI不要です。内部ツール往復や復旧により幅があります。'},nineflags:{label:'多め・幅あり',reason:'通常版は9旗、お気軽版は5旗・戦術なしで、通常版よりAI利用を抑えやすい構成です。短縮率や金額は保証しません。一手ごとの判断にAIを利用します。戦術の補充・対象選択・割り込みで幅があります。証明・配札・精算はAI不要。同じ応答内で自分の操作を続ける設計ですが、本体内部のツール往復・復旧は別途発生します。'},quartet:{label:'少なめ〜中程度',reason:'盤面は最大16駒。AIの配置は最大8回で、配置と次に渡す駒の選択を同じ会話要求内にまとめます。初手の駒選び・終了通知・復旧再依頼やモデル内部のツール往復は別途発生します。練習ボットはAPI不要です。'},paraphrase:{label:'少なめ〜中程度',reason:'通常5問・お試し1問。説明・回答・追加説明の依頼で本体を利用します。伏字と正誤判定はシステムが行い、判定専用のAI通信はありません。お題交換や追加説明で幅があります。'},bestfive:{label:'会話次第',reason:'通常は交代して2ラウンド、お試しは1ラウンド。AIの順位確定、質問への返答、予想と振り返りで本体を利用します。ライフは予想の回数で、質問のAPI利用量は制限しません。お題選択・下書き・並べ替えはAPI不要です。'},indian:{label:'少なめ〜中程度',reason:'通常6ハンド・お試し2ハンド。各ハンドは1段階のベットでレイズは1回まで。配札はシステムで行い、AIの判断と決着の会話で利用します。表情の追加通信はありません。モデル内部のツール往復や復旧再依頼は別途発生します。'},geister:{label:'多め・幅あり',reason:'AIの初期配置と、一手ごとの判断で本体を利用します。決着までの手数に上限を設けていないため、長引くと利用量が増えます。配置のあと相手が先手なら、同じ応答内で着手を続けられます。練習ボットはAPI不要です。'},lateral:{label:'会話次第',reason:'出題時に1回、質問・推理・ヒント・回答の確認依頼ごとに本体へ送信します。質問回数の上限はありません。正解時の振り返りは同じ応答にまとめ、追加の感想だけの自動送信はしません。操作練習はAPI不要です。'},lastcard:{label:'多め・幅あり',reason:'AIの判断が必要な手番ごとに利用。ドローで長引く場合があります。ボットと強制ドローはAPI不要、連続手番は同じ会話要求でまとめて進めます。'},
- wordscale:{label:'会話次第',reason:'通常3ステージは20〜30回、お試し1ステージは5〜10回程度の本体への送信を想定しています。追加の相談ぶんは増えます。これは設計上の目安で、内部モデルやツールの往復を含むAPI呼び出し回数ではありません。'},
- mancala:{label:'中程度〜多め',reason:'各穴2個の1対局。横取り設定や配り方で展開が変わります。追加手番で穴の選択が続くことがあり、配り方によって操作回数が変わります。暫定的な相対目安です。'},
- daifugo:{label:'多め',reason:'各15枚の3ラウンド。札を出す・パスする判断に加え、交換や連続手番でツールとの往復が増えます。まとめ出しで短くなるため、展開によって幅があります。'},
- texas:{label:'多め',reason:'5／10ハンドの各ハンドに最大4段階のベット判断があり、レイズで往復も増えます。降りて早く決着する展開では短くなります。'},
- connectfour:{label:'中程度〜多め',reason:'AIは最大21手番。4つそろうと途中で決着するため、対局の長さに幅があります。盤面確認や終了時の会話でも利用量が変わります。'},
- hitblow:{label:'中程度',reason:'最大8回の予想に加え、盤面確認や続行判断、終了時の会話が発生します。推理・会話の長さやモデル設定によって利用量が変わります。'},
- reversi:{label:'多め',reason:'通常はAIの手番が約30回。盤面を確認して、一手ずつ判断します。'},
- yacht:{label:'中程度〜多め',reason:'AIは12手番。振り直しや役の確定でツールとの往復が増えるため、幅があります。'},
- blackjack:{label:'少なめ',reason:'最大5ラウンド。通常の配札時は応答を省き、ユーザーの手番終了や即決着時に通知します。'}
+const aiUsageEstimates={
+ "liars": {
+  "label": "往復はほどほど",
+  "reason": "宣言を上げたりダウトしたりするたびに、チャットと盤面を行き来します。宣言の応酬が続くと長めに。お試し版は1ラウンドです。"
+ },
+ "nineflags": {
+  "label": "往復は多め",
+  "reason": "一手ずつ札を配置し、旗を取り合う対戦です。戦術札の選択でもやり取りが増えます。お気軽版は旗が少なく、短めに遊べます。"
+ },
+ "quartet": {
+  "label": "往復は少なめ",
+  "reason": "渡す駒を選び、相手から受け取った駒を置いて進めます。盤面は16マスなので、比較的少ない往復で決着します。"
+ },
+ "paraphrase": {
+  "label": "往復はほどほど",
+  "reason": "説明と回答を交互に送り、追加のヒントも相談できます。説明を足すほど往復が増えます。お試し版は1問です。"
+ },
+ "bestfive": {
+  "label": "会話次第",
+  "reason": "好みを質問しながら、相手のランキングを予想します。質問回数に制限はなく、おしゃべりを楽しむほど長く遊べます。"
+ },
+ "indian": {
+  "label": "往復は少なめ",
+  "reason": "各ハンドのベットと勝負の結果をやり取りします。1ハンドごとの判断は少なめ。お試し版は2ハンドです。"
+ },
+ "geister": {
+  "label": "往復は多め",
+  "reason": "秘密の配置を決めた後、一手ずつおばけを動かします。逃げ道を探ったり相手を誘ったり、駆け引きが続くほど往復も増えます。"
+ },
+ "lateral": {
+  "label": "会話次第",
+  "reason": "質問・推理・ヒントをチャットでやり取りして、真相に近づきます。質問回数に制限はなく、ひらめきや相談の進め方で長さが変わります。"
+ },
+ "lastcard": {
+  "label": "往復は多め",
+  "reason": "札を出す・引く判断を交互にやり取りします。ドローや連続手番で長めになることも。最後の1枚まで駆け引きを楽しめます。"
+ },
+ "wordscale": {
+  "label": "会話次第",
+  "reason": "たとえを伝え合い、札を出す順番を相談します。じっくり話し合うほど往復が増えます。お試し版は1ステージです。"
+ },
+ "mancala": {
+  "label": "往復はほどほど",
+  "reason": "石を配る穴を一手ずつ選んで進めます。もう一度動ける手番もあり、石の配り方やルールで対戦の長さが変わります。"
+ },
+ "daifugo": {
+  "label": "往復は多め",
+  "reason": "札を出す・パスする判断を重ねて進めます。まとめ出しで早く進むことも、場の流れを待って長くなることもあります。"
+ },
+ "texas": {
+  "label": "往復は多め",
+  "reason": "配札から決着まで、ベットの判断を何度かやり取りします。レイズでじっくり駆け引きしたり、フォールドで早めに決着したりします。"
+ },
+ "connectfour": {
+  "label": "往復はほどほど",
+  "reason": "一手ずつコマを落とし、4つ並ぶまで対戦します。早めに決着することも、盤面いっぱいまで競り合うこともあります。"
+ },
+ "hitblow": {
+  "label": "往復はほどほど",
+  "reason": "予想と判定を見比べながら、秘密の並びを絞り込みます。正解までの予想回数や、推理の会話によって往復が変わります。"
+ },
+ "blackjack": {
+  "label": "往復は少なめ",
+  "reason": "カードを引くか止めるかを選び、ディーラーの手番と結果をやり取りします。短い判断を重ねて遊べます。"
+ },
+ "yacht": {
+  "label": "往復はほどほど",
+  "reason": "ダイスを振り、残す目や役を選んで進めます。双方の役が埋まるまで、順番にチャットと盤面を行き来します。"
+ },
+ "reversi": {
+  "label": "往復は多め",
+  "reason": "一手ずつ石を置いて、盤面が埋まるまで対戦します。終盤までじっくり遊ぶと往復も多くなります。"
+ }
 };
-function aiUsageHint(game){const estimate=aiUsageEstimates[game];if(!estimate)return '';return `<button type="button" class="ai-usage-badge" data-ai-usage="${esc(game)}" aria-haspopup="dialog"><span>AI利用量の目安</span><strong>${esc(estimate.label)}</strong><span class="ai-usage-info" aria-hidden="true">i</span></button>`;}
-function showAiUsage(game){alert('この版は手動チャット方式です。AIの1操作ごとにコピー＆貼り付けします。利用量はチャットサービスとゲームの長さで変わります。APIキーは使いません。');return;const estimate=aiUsageEstimates[game];if(!estimate)return;let dialog=$('#ai-usage-dialog');if(!dialog){dialog=document.createElement('dialog');dialog.id='ai-usage-dialog';dialog.setAttribute('aria-labelledby','ai-usage-title');document.body.append(dialog);}dialog.innerHTML=`<div class="dialog-heading"><h2 id="ai-usage-title">${esc(gameName({game}))}のAI利用量</h2><button class="close" aria-label="閉じる">×</button></div><p class="ai-usage-level">AI利用量の目安：<strong>${esc(estimate.label)}</strong></p><p>${esc(estimate.reason)}</p><p class="small muted">標準的な1対局での手番数と、ツール操作の往復をもとにした相対的な目安です。API呼び出し回数や金額を保証するものではなく、モデル・本体設定・展開により変わります。</p><p class="small muted">練習ボットはAIのAPIを使いません。</p>`;dialog.querySelector('.close').onclick=()=>dialog.close();dialog.showModal();}
+function aiUsageHint(game){const estimate=aiUsageEstimates[game];if(!estimate)return '';return `<button type="button" class="ai-usage-badge" data-ai-usage="${esc(game)}" aria-haspopup="dialog"><span>チャットのやり取り</span><strong>${esc(estimate.label)}</strong><span class="ai-usage-info" aria-hidden="true">i</span></button>`;}
+function showAiUsage(game){const estimate=aiUsageEstimates[game];if(!estimate)return;document.querySelector('#chat-exchange-dialog')?.remove();const d=document.createElement('dialog');d.id='chat-exchange-dialog';d.setAttribute('aria-labelledby','chat-exchange-title');d.innerHTML='<div class="dialog-heading"><div><span class="eyebrow">'+esc(gameName({game}))+'</span><h2 id="chat-exchange-title">チャットのやり取り</h2></div><button class="close" aria-label="閉じる">×</button></div><p class="lead">'+esc(estimate.label)+'</p><p>'+esc(estimate.reason)+'</p><p class="small muted">相手との会話や展開によって、往復の多さは変わります。</p>';document.body.append(d);d.querySelector('.close').onclick=()=>d.close();d.onclose=()=>d.remove();d.showModal();}
 const gameName=s=>s.game==='liars'?'ライアーズダイス':s.game==='nineflags'?'九旗のかけひき':s.game==='quartet'?'しるしの四重奏':s.game==='paraphrase'?'ことばの言いかえ':s.game==='bestfive'?'ふたりのベスト5':s.game==='indian'?'インディアンポーカー':s.game==='geister'?'おばけのかくしごと':s.game==='lateral'?'水平思考クイズ':s.game==='lastcard'?'ラストカード':s.game==='wordscale'?'ことばのものさし':s.game==='mancala'?'マンカラ':s.game==='daifugo'?'大富豪':s.game==='texas'?'テキサスポーカー':s.game==='connectfour'?'四目並べ':s.game==='hitblow'?'ヒット＆ブロー':s.game==='blackjack'?'ブラックジャック':s.game==='yacht'?'ヨット':'リバーシ';
 function recordGameIcon(g){
  const icons={liars:'<rect x="3" y="14" width="23" height="23" rx="5" fill="#f6efd9"/><circle cx="9" cy="20" r="2" fill="#345e4d"/><circle cx="15" cy="26" r="2" fill="#345e4d"/><circle cx="21" cy="32" r="2" fill="#345e4d"/><path d="M24 4H34L38 23Q29 29 21 23Z" fill="#b99968"/><text x="29" y="19" font-size="15" text-anchor="middle" fill="#fff7e5">?</text>',nineflags:'<path d="M8 5V36M8 6L32 9L26 18L8 16" stroke="#b99a62" stroke-width="3" fill="#78a08a"/><path d="M14 10L14 14" stroke="#f6e8bb" stroke-width="2"/>',quartet:'<rect x="3" y="5" width="15" height="15" rx="3" fill="#eee4c8"/><circle cx="29" cy="12" r="8" fill="#456d5a"/><circle cx="29" cy="12" r="3" fill="#172f28"/><circle cx="11" cy="30" r="8" fill="#456d5a"/><rect x="22" y="23" width="15" height="15" rx="3" fill="#eee4c8"/><path d="M23 34L33 24M27 37L37 27" stroke="#aa9468" stroke-width="2.5"/>',paraphrase:'<rect x="3" y="4" width="27" height="23" rx="7" fill="#e7dbc1"/><text x="16" y="21" text-anchor="middle" fill="#47665a" font-size="17">あ</text><circle cx="29" cy="28" r="10" fill="#8da38b"/><text x="29" y="34" text-anchor="middle" fill="#fff8e8" font-size="16">?</text>',bestfive:'<rect x="4" y="6" width="24" height="30" rx="4" fill="#e9dcbf"/><rect x="15" y="2" width="21" height="29" rx="4" fill="#78917a"/><text x="25" y="24" fill="#fff8e6" text-anchor="middle" font-size="20">♡</text>',indian:'<rect x="3" y="7" width="19" height="28" rx="3" fill="#426859" stroke="#d9d9bc"/><text x="12" y="27" text-anchor="middle" fill="#f4e4b9" font-size="20">?</text><rect x="21" y="3" width="17" height="28" rx="3" fill="#f8f2df"/><text x="29" y="23" text-anchor="middle" fill="#b85158" font-size="16">K</text>',geister:'<path d="M9 30V15C9 1 31 1 31 15V30L26 27L20 32L14 27Z" fill="#fff5df" stroke="#a8b4a7"/><circle cx="16" cy="15" r="1.7" fill="#345650"/><circle cx="24" cy="15" r="1.7" fill="#345650"/><path d="M17 19Q20 22 23 19" stroke="#345650" fill="none"/><path d="M20 23L24 27L20 31L16 27Z" fill="#8bb9d5"/>',lateral:'<rect x="7" y="4" width="24" height="31" rx="4" fill="#e7dec9"/><text x="19" y="27" text-anchor="middle" fill="#47665a" font-family="Georgia" font-size="25">?</text><circle cx="28" cy="27" r="7" stroke="#b29159" stroke-width="3" fill="none"/><path d="M32 33L37 38" stroke="#b29159" stroke-width="4"/>',lastcard:'<rect x="4" y="7" width="22" height="29" rx="4" fill="#a94252" stroke="#f5ecd4"/><rect x="15" y="3" width="22" height="29" rx="4" fill="#315f93" stroke="#f5ecd4"/><text x="26" y="23" text-anchor="middle" fill="#fff9e9" font-size="18">7</text>',wordscale:'<path d="M3 8Q3 3 9 3H23Q29 3 29 9V18Q29 23 23 23H13L7 29V23Q3 23 3 18Z" fill="#e5e6ce"/><path d="M16 18Q16 13 22 13H31Q37 13 37 19V27Q37 32 31 32V37L25 32H22Q16 32 16 27Z" fill="#bfa78e"/>',
@@ -97,7 +160,7 @@ function renderHome(){
 }
 function bindRules(){$$('[data-rules]').forEach(b=>b.onclick=()=>$('#rules-dialog').showModal());}
 function openStart(game='reversi'){const ld=$('#liars-options');ld.hidden=game!=='liars';$('#ld-first').disabled=game!=='liars';$('#ld-first').value='random';const f=$('#start-form');f.game.value=game;$('#nineflags-options').hidden=game!=='nineflags';f.nfFirst.disabled=f.nfTactics.disabled=game!=='nineflags';f.nfFirst.value='random';f.nfTactics.checked=true;$('#quartet-options').hidden=game!=='quartet';f.qtFirst.disabled=game!=='quartet';f.qtFirst.value='random';$('#paraphrase-options').hidden=game!=='paraphrase';f.ppRole.disabled=game!=='paraphrase';f.ppRole.value='alternate';$('#bestfive-options').hidden=game!=='bestfive';f.bfGenre.disabled=f.bfFirst.disabled=game!=='bestfive';f.bfGenre.value='daily';f.bfFirst.value='random';$('#geister-options').hidden=game!=='geister';f.gtFirst.disabled=game!=='geister';f.gtFirst.value='random';$('#lateral-options').hidden=game!=='lateral';f.ltGenre.disabled=f.ltDifficulty.disabled=game!=='lateral';f.ltGenre.value=f.ltDifficulty.value='any';f.mode.options[0].textContent=game==='lateral'?'操作練習 · 用意された質問で試す':'練習ボットで試す';$('#lastcard-options').hidden=game!=='lastcard';f.lcPlayers.disabled=f.lcStack.disabled=f.lcFirst.disabled=f.lcMulti.disabled=game!=='lastcard';f.lcFirst.value='random';f.lcMulti.checked=false;f.lcFirst.options[3].disabled=true;f.lcPlayers.value='2';f.lcStack.checked=false;f.mode.closest('label').firstChild.textContent=['paraphrase','lateral','wordscale'].includes(game)?'遊ぶ相手':'対戦モード';$('button[type=submit]',f).innerHTML=game==='lateral'?'謎を開く ↗':['paraphrase','wordscale'].includes(game)?'いっしょにはじめる <span>↗</span>':'対局をはじめる <span>↗</span>'; $('#mancala-options').hidden=game!=='mancala';f.mcCapture.disabled=game!=='mancala';f.mcCapture.checked=false;f.mcWinCondition.disabled=game!=='mancala';f.mcWinCondition.value='score';$('#play-style-options').hidden=!['liars','nineflags','paraphrase','bestfive','indian','daifugo','texas','blackjack','wordscale'].includes(game);f.playStyle.disabled=!['liars','nineflags','paraphrase','bestfive','indian','daifugo','texas','blackjack','wordscale'].includes(game);f.playStyle.value='standard';f.bjSplit.checked=false;$('#daifugo-options').hidden=game!=='daifugo';f.dfBinding.disabled=f.dfStairs.disabled=game!=='daifugo';f.dfBinding.checked=f.dfStairs.checked=false;$('#texas-options').hidden=game!=='texas';f.handLimit.disabled=game!=='texas';f.handLimit.value='5';$('#hitblow-options').hidden=game!=='hitblow';f.hitblowAnswerMode.disabled=game!=='hitblow';f.hitblowAnswerMode.value='unique';$('#start-title').textContent=gameName({game})+'を、だれと？';const label=f.color.closest('label');label.hidden=['liars','nineflags','quartet','paraphrase','bestfive','indian','geister','lateral','lastcard','blackjack','texas','daifugo','wordscale'].includes(game);label.firstChild.textContent=['yacht','hitblow','connectfour','mancala'].includes(game)?'あなたの順番':'あなたの石';f.color.options[0].textContent=['yacht','hitblow','connectfour','mancala'].includes(game)?'先手':'黒（先手）';f.color.options[1].textContent=['yacht','hitblow','connectfour','mancala'].includes(game)?'後手':'白（後手）';f.color.value=game==='mancala'?'random':'black';f.mode.value='practice';f.roomId.required=false;$('#room-picker').hidden=true;$('#start-error').textContent='';updatePlayStyle();resetPrivateLateralStart();$('#start-dialog').showModal();}
-function updatePlayStyle(){const f=$('#start-form'),quick=f.playStyle.value==='quick',game=f.game.value;$('#quick-style-note').textContent=game==='liars'?(quick?'お試し版：1ラウンド・各100枚。ダウトまたはフォールドで決着。':'通常版：最大4ラウンド・先手交代。各100枚・参加料10枚・レイズとオールインあり。0枚で早期終了。'):game==='nineflags'?(quick?'お気軽版：5旗・各3枚・先に3旗。戦術なし・手札7枚。AI利用量は通常版より控えめな目安です。':'通常版：9旗。隣接3旗または合計5旗。戦術あり／なしを選べます。'):game==='paraphrase'?(quick?'お試し版：1問・お題交換なし。':'通常版：交換分を除いて5問。お題の交換は一人1回ずつ。'):game==='bestfive'?(quick?'お試し版：1ラウンド。質問は自由、予想はライフ3回分。':'通常版：2ラウンド。出題者を交代し、ライフは各ラウンドで3に戻ります。総合勝敗はありません。'):game==='indian'?(quick?'お試し版：各100枚・最大2ハンド。先手交代、途中で片方が0枚なら終了。':'通常版：各100枚・最大6ハンド。参加料5枚、ベット10枚、レイズは1回まで。フォールドでも双方の札を公開。'):game==='wordscale'?(quick?'お試し版：1ステージ・各自1枚。並べる順番を間違えたら終了。':'通常版：3ステージ・各自1→2→3枚。共有ライフ3、回復なし。'):quick?(game==='texas'?'お気軽版：各100枚・最大2ハンド。交代前でも、片方が0枚になれば終了します。':game==='blackjack'?'お気軽版：チップ・ベット・ダブルダウンなし。即配札で1回勝負。':'お気軽版：各15枚・1ラウンド。交換なし。この1回の勝者が優勝。'):'通常版：'+(game==='texas'?'5／10ハンド。':game==='blackjack'?'100枚・最大5ラウンド、目標120枚。':'3ラウンド。第2・第3ラウンドは1枚交換。最後の勝者が優勝。');f.playStyle.options[1].textContent=game==='liars'?'お試し版 · 1ラウンド':game==='nineflags'?'お気軽版 · 5旗':game==='paraphrase'?'お試し版 · 1問':game==='bestfive'?'お試し版 · 1ラウンド':game==='wordscale'?'お試し版 · 1ステージ':game==='indian'?'お試し版 · 最大2ハンド':game==='texas'?'お気軽版 · 最大2ハンド':'お気軽版 · 1ラウンド';if(game==='nineflags'){f.nfTactics.disabled=quick;$('#nf-tactics-label').hidden=quick;$('#nf-length-description').textContent=quick?'各7枚・5旗・戦術なし。場所を問わず先に3旗で勝利。隣接による勝利はありません。':'各7枚・9旗。隣接3旗または合計5旗で勝利。';}$('#blackjack-options').hidden=game!=='blackjack'||quick;f.bjSplit.disabled=game!=='blackjack'||quick;$('#texas-options').hidden=game!=='texas'||quick;f.handLimit.disabled=game!=='texas'||quick;$('#df-length-description').textContent=quick?'各15枚・1ラウンド。交換なし。先に出し切った人が勝ち。':'各15枚・3ラウンド。最終ラウンドの勝者が優勝。第2・第3ラウンドは1枚交換します。';}
+function updatePlayStyle(){const f=$('#start-form'),quick=f.playStyle.value==='quick',game=f.game.value;$('#quick-style-note').textContent=game==='liars'?(quick?'お試し版：1ラウンド・各100枚。ダウトまたはフォールドで決着。':'通常版：最大4ラウンド・先手交代。各100枚・参加料10枚・レイズとオールインあり。0枚で早期終了。'):game==='nineflags'?(quick?'お気軽版：5旗・各3枚・先に3旗。戦術なし・手札7枚。通常版より短めに遊べます。':'通常版：9旗。隣接3旗または合計5旗。戦術あり／なしを選べます。'):game==='paraphrase'?(quick?'お試し版：1問・お題交換なし。':'通常版：交換分を除いて5問。お題の交換は一人1回ずつ。'):game==='bestfive'?(quick?'お試し版：1ラウンド。質問は自由、予想はライフ3回分。':'通常版：2ラウンド。出題者を交代し、ライフは各ラウンドで3に戻ります。総合勝敗はありません。'):game==='indian'?(quick?'お試し版：各100枚・最大2ハンド。先手交代、途中で片方が0枚なら終了。':'通常版：各100枚・最大6ハンド。参加料5枚、ベット10枚、レイズは1回まで。フォールドでも双方の札を公開。'):game==='wordscale'?(quick?'お試し版：1ステージ・各自1枚。並べる順番を間違えたら終了。':'通常版：3ステージ・各自1→2→3枚。共有ライフ3、回復なし。'):quick?(game==='texas'?'お気軽版：各100枚・最大2ハンド。交代前でも、片方が0枚になれば終了します。':game==='blackjack'?'お気軽版：チップ・ベット・ダブルダウンなし。即配札で1回勝負。':'お気軽版：各15枚・1ラウンド。交換なし。この1回の勝者が優勝。'):'通常版：'+(game==='texas'?'5／10ハンド。':game==='blackjack'?'100枚・最大5ラウンド、目標120枚。':'3ラウンド。第2・第3ラウンドは1枚交換。最後の勝者が優勝。');f.playStyle.options[1].textContent=game==='liars'?'お試し版 · 1ラウンド':game==='nineflags'?'お気軽版 · 5旗':game==='paraphrase'?'お試し版 · 1問':game==='bestfive'?'お試し版 · 1ラウンド':game==='wordscale'?'お試し版 · 1ステージ':game==='indian'?'お試し版 · 最大2ハンド':game==='texas'?'お気軽版 · 最大2ハンド':'お気軽版 · 1ラウンド';if(game==='nineflags'){f.nfTactics.disabled=quick;$('#nf-tactics-label').hidden=quick;$('#nf-length-description').textContent=quick?'各7枚・5旗・戦術なし。場所を問わず先に3旗で勝利。隣接による勝利はありません。':'各7枚・9旗。隣接3旗または合計5旗で勝利。';}$('#blackjack-options').hidden=game!=='blackjack'||quick;f.bjSplit.disabled=game!=='blackjack'||quick;$('#texas-options').hidden=game!=='texas'||quick;f.handLimit.disabled=game!=='texas'||quick;$('#df-length-description').textContent=quick?'各15枚・1ラウンド。交換なし。先に出し切った人が勝ち。':'各15枚・3ラウンド。最終ラウンドの勝者が優勝。第2・第3ラウンドは1枚交換します。';}
 $('#start-form').playStyle.onchange=updatePlayStyle;
 function previewFlips(board,index,color){
   if(board[index])return [];const all=[],r0=Math.floor(index/8),c0=index%8;
@@ -109,22 +172,22 @@ function displayedGame(){
   if(replayStep===0){const b=Array(64).fill(0);b[27]=b[36]=2;b[28]=b[35]=1;return {...current,board:b,turn:1,lastMove:null,counts:{black:2,white:2},legal:[],passed:null};}
   return history[replayStep-1]||current;
 }
-function renderGame(){renderGameBody();if(current?.mode==='nexus')renderChatBridge(current,api,updateCurrent,toast);document.querySelector('#test-commentary')?.closest('div')?.remove();}
+function renderGame(){renderGameBody();if(current?.mode==='nexus'&&!['geister','connectfour','quartet'].includes(current.game))renderChatBridge(current,api,updateCurrent,toast);document.querySelector('#test-commentary')?.closest('div')?.remove();}
 function renderGameBody(){
   if(current)captureConversation(current);
   if(!current)return;
-  if(current.game==='liars'){renderLiars({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}if(current.game==='nineflags'){renderNineflags({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}if(current.game==='quartet'){renderQuartet({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
+  if(current.game==='liars'){renderLiars({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}if(current.game==='nineflags'){renderNineflags({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}if(current.game==='quartet'){renderQuartet({s:current,settings,api,refresh:updateCurrent,toast,openStart,afterRender:()=>{if(current?.mode==='nexus')renderChatBridge(current,api,updateCurrent,toast);},onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='paraphrase'){renderParaphrase({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='bestfive'){renderBestfive({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='indian'){renderIndian({s:current,settings,api,refresh:updateCurrent,toast,openStart,onSettings:next=>{settings=next;applySettings();},onEnd:()=>$('#confirm-dialog').showModal()});return;}
-  if(current.game==='geister'){renderGeister({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
+  if(current.game==='geister'){renderGeister({s:current,settings,api,refresh:updateCurrent,toast,openStart,afterRender:()=>{if(current?.mode==='nexus')renderChatBridge(current,api,updateCurrent,toast);},onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='lateral'){renderLateral({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='lastcard'){renderLastcard({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='wordscale'){renderWordscale({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='mancala'){renderMancala({s:current,history,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='daifugo'){renderDaifugo({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='texas'){renderTexas({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
-  if(current.game==='connectfour'){renderConnectFour({s:current,history,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
+  if(current.game==='connectfour'){renderConnectFour({s:current,history,settings,api,refresh:updateCurrent,toast,openStart,afterRender:()=>{if(current?.mode==='nexus')renderChatBridge(current,api,updateCurrent,toast);},onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='hitblow'){renderHitBlow({s:current,settings,api,refresh:updateCurrent,toast,openStart,onEnd:()=>$('#confirm-dialog').showModal()});return;}
   if(current.game==='blackjack'){renderBlackjack({s:current,history,settings,api,refresh:updateCurrent,toast,openStart});return;}
   if(current.game==='yacht'){renderYacht({s:current,history,settings,api,refresh:updateCurrent,toast,openStart,onSettings:next=>{settings=next;applySettings();}});return;}
