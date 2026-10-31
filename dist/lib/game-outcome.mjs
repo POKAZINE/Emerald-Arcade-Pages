@@ -1,4 +1,4 @@
-import {totals} from './yacht.mjs';
+import {totals} from './yacht.mjs?v=73056c009915';
 export function gameOutcome(s){
  if(s.game==='liars')return s.status==='finished'?{winner:s.result==='draw'?'draw':s.result==='win'?'user':'persona',user_result:s.result,stacks:{user:s.stacks[1],persona:s.stacks[2]},message:'ライアーズダイスの対局終了。ユーザー'+s.stacks[1]+'枚／あなた'+s.stacks[2]+'枚。'+(s.result==='draw'?'引き分け。':(s.result==='win'?'ユーザー':'あなた')+'の勝利。')+'操作不要。公開された出目・チップで振り返り、次の開始は案内しない。'}:null;
  if(s.game==='nineflags')return s.status==='finished'?{winner:s.result==='draw'?'draw':s.result==='win'?'user':'persona',user_result:s.result,winning_flags:s.winningFlags,flags:{user:s.flags.filter(f=>f.owner===1).length,persona:s.flags.filter(f=>f.owner===2).length},message:'九旗のかけひき終了。'+(s.result==='draw'?'引き分け。':(s.result==='win'?'ユーザー':'あなた')+'の勝利。'+(s.winReason==='adjacent'?'旗'+s.winningFlags.join('・')+'を連続獲得。':'合計'+(s.playStyle==='quick'?3:5)+'旗を獲得。'))+'操作不要。公開された旗と決着理由で振り返り、未公開の手札・山札は明かさない。'}:null;

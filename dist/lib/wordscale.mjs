@@ -1,5 +1,5 @@
-import {randomInt,randomUUID} from '../browser/crypto.mjs';
-import {scaleTopics,createWordscaleTopicOptions,wordscaleTopicChoices} from './wordscale-topics.mjs';
+import {randomInt,randomUUID} from '../browser/crypto.mjs?v=73056c009915';
+import {scaleTopics,createWordscaleTopicOptions,wordscaleTopicChoices} from './wordscale-topics.mjs?v=73056c009915';
 export {scaleTopics,wordscaleTopicChoices};
 function topicOf(value){if(typeof value==='string'){const t=scaleTopics.find(t=>t.id===value);if(t)return structuredClone(t);}if(value&&typeof value==='object'&&['title','low','high'].every(k=>typeof value[k]==='string'&&value[k].trim()&&value[k].length<=100))return {id:'custom',...Object.fromEntries(['title','low','high'].map(k=>[k,value[k].trim()]))};throw Error('お題と両端の意味を入力してください。');}
 export function wordscaleReferencePrivacy(reference){return Number.isInteger(reference)&&reference>=1&&reference<=100?'公開の基準'+reference+'を使っても、未公開の手札に「基準'+reference+'超え」「'+reference+'以下」など数値範囲が分かる注記は括弧内にも付けず、たとえで表現してください。口調と、たとえ同士の意味・印象の比較は自由です。':'';}

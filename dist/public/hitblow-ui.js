@@ -1,5 +1,5 @@
-import {bindResultShare} from './result-share.js';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js';
+import {bindResultShare} from './result-share.js?v=73056c009915';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const drafts=new Map(),versions=new Map();let audio,unlocked=false;
 function draft(s){if(!drafts.has(s.id)){let saved;try{saved=JSON.parse(sessionStorage.getItem('hitblow-draft:'+s.id));}catch{}drafts.set(s.id,{code:saved?.code?.length===4?saved.code:[null,null,null,null],slot:0});}return drafts.get(s.id);}

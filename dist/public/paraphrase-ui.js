@@ -1,6 +1,6 @@
-import {maskExplanation,explanationLength} from './paraphrase-text.js';
-import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery} from './yacht-ui.js';
-import {bindResultShare} from './result-share.js';
+import {maskExplanation,explanationLength} from './paraphrase-text.js?v=73056c009915';
+import {captureConversation,conversationPanel,bindConversation,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
+import {bindResultShare} from './result-share.js?v=73056c009915';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),drafts=new Map();let audio,unlocked=false;
 function chime(settings){if(!unlocked||!settings.sound)return;try{audio??=new AudioContext();audio.resume();[523,659,784].forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.09;o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(Number(settings.volume??.45)*.06,t);g.gain.exponentialRampToValueAtTime(.0001,t+.2);o.connect(g).connect(audio.destination);o.start(t);o.stop(t+.21);o.onended=()=>{o.disconnect();g.disconnect();};});}catch{}}
 export function paraphraseArt(){return '<div class="pp-art"><span>あの…</span><b>↔</b><span>わかった！</span></div><span class="yacht-art-label">DIFFERENT WORDS. SAME LITTLE SPARK.</span>';}

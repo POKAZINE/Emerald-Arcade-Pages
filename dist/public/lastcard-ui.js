@@ -1,7 +1,7 @@
-import {selectionState} from './lastcard-selection.js';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js';
-import {bindResultShare} from './result-share.js';
-import {lastcardPresentation,unseenLastcardActions} from './lastcard-events.js';
+import {selectionState} from './lastcard-selection.js?v=73056c009915';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
+import {bindResultShare} from './result-share.js?v=73056c009915';
+import {lastcardPresentation,unseenLastcardActions} from './lastcard-events.js?v=73056c009915';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const colors={red:['赤','●'],blue:['青','◆'],green:['緑','▲'],yellow:['黄','★']},kinds={skip:['⊘','スキップ'],reverse:['⇄','リバース'],draw2:['+2','ドロー2'],wild:['✦','色変更'],wild4:['+4','ワイルドドロー4']};
 const label=c=>c?(c.color?colors[c.color][0]+'の':'')+(c.kind==='number'?c.number:kinds[c.kind][1]):'—';

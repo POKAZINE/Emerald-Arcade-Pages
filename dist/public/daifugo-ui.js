@@ -1,7 +1,7 @@
-import {dfLabel,dfCard,dfSort,dfSelection,DF_SUITS} from './daifugo-rules.js';
-import {playingCard} from './blackjack-ui.js';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js';
-import {bindResultShare} from './result-share.js';
+import {dfLabel,dfCard,dfSort,dfSelection,DF_SUITS} from './daifugo-rules.js?v=73056c009915';
+import {playingCard} from './blackjack-ui.js?v=73056c009915';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
+import {bindResultShare} from './result-share.js?v=73056c009915';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const drafts=new Map();let audio,unlocked=false;
 const card=id=>id==='jk'?'<span class="playing-card df-joker" role="img" aria-label="ジョーカー"><small>JOKER</small><b>✦</b><small>WILD CARD</small></span>':playingCard(dfCard(id));

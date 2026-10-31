@@ -1,5 +1,5 @@
-import {randomInt,randomUUID} from '../browser/crypto.mjs';
-import {bestfiveTopics} from './bestfive-topics.mjs';
+import {randomInt,randomUUID} from '../browser/crypto.mjs?v=73056c009915';
+import {bestfiveTopics} from './bestfive-topics.mjs?v=73056c009915';
 const copy=x=>structuredClone(x),now=()=>new Date().toISOString();
 function text(v,max=600){if(typeof v!=='string'||!v.trim()||v.length>max)throw Error('1〜'+max+'文字で入力してください。');return v.trim();}
 function permutation(order,items){const ids=items.map(i=>i.id);if(!Array.isArray(order)||order.length!==5||new Set(order).size!==5||order.some(id=>!ids.includes(id)))throw Error('5項目を重複なく、一つずつ並べてください。');return [...order];}

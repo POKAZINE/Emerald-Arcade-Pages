@@ -1,7 +1,7 @@
-import {nfCard,nfColor,nfTokenStats,nfLabel} from './nineflags-cards.js';
-import {drawQuartetPiece} from './quartet-pieces.js';
-import {resultCardData} from './result-card-data.js';
-import {cfColor} from './connectfour-colors.js';
+import {nfCard,nfColor,nfTokenStats,nfLabel} from './nineflags-cards.js?v=73056c009915';
+import {drawQuartetPiece} from './quartet-pieces.js?v=73056c009915';
+import {resultCardData} from './result-card-data.js?v=73056c009915';
+import {cfColor} from './connectfour-colors.js?v=73056c009915';
 const W=960,H=1200,ink='#263f35',muted='#718075',gold='#a48047',paper='#f8f6ee',soft='#e8eddf';
 const hb={red:['#b74c5b','●'],blue:['#3f77a7','◆'],green:['#4b866c','▲'],yellow:['#dfbd57','★'],purple:['#84618e','✚'],white:['#ececdf','■']};
 function paraphraseShareLayout(c,d){c.font='22px "Yu Gothic UI",Meiryo,sans-serif';let y=d.playStyle==='quick'?(d.summary.solved?375:330):495;const rounds=d.rounds.map(r=>{const lines=[];r.clues.forEach((clue,i)=>{let line=(i?'追加'+i+'：':'説明：');for(const ch of Array.from(clue)){if(ch==='\n'||c.measureText(line+ch).width>730){lines.push(line);line=ch==='\n'?'':ch;}else line+=ch;}if(line)lines.push(line);});const row={...r,y,lines};y+=100+lines.length*34;return row;});return {rounds,bottom:y};}

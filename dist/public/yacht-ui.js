@@ -1,5 +1,5 @@
-import {bindResultShare} from './result-share.js';
-import {createDiceRollBuffer} from './dice-audio.js';
+import {bindResultShare} from './result-share.js?v=73056c009915';
+import {createDiceRollBuffer} from './dice-audio.js?v=73056c009915';
 const noteDrafts=new Map(),replyStates=new Map();let noteFocus=null;
 function stored(key){try{return sessionStorage.getItem(key);}catch{return null;}}
 function saveLocal(key,value){try{sessionStorage.setItem(key,value);}catch{}}

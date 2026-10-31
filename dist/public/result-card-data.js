@@ -1,4 +1,4 @@
-import {APP_NAME} from './branding.js';
+import {APP_NAME} from './branding.js?v=73056c009915';
 const names={liars:'ライアーズダイス',nineflags:'九旗のかけひき',quartet:'しるしの四重奏',paraphrase:'ことばの言いかえ',bestfive:'ふたりのベスト5',indian:'インディアンポーカー',geister:'おばけのかくしごと',lateral:'水平思考クイズ',lastcard:'ラストカード',wordscale:'ことばのものさし',mancala:'マンカラ',daifugo:'大富豪',reversi:'リバーシ',yacht:'ヨット',blackjack:'ブラックジャック',hitblow:'ヒット＆ブロー',connectfour:'四目並べ',texas:'テキサスポーカー'};
 export const RESULT_YACHT_ROWS=[['ones','エース'],['twos','デュース'],['threes','トレイ'],['fours','フォー'],['fives','ファイブ'],['sixes','シックス'],['choice','チョイス'],['four_kind','フォーダイス'],['full_house','フルハウス'],['small_straight','S.ストレート'],['big_straight','B.ストレート'],['yacht','ヨット']];
 const short=value=>String(value??'').replace(/[\r\n\t\u0000-\u001f]/g,' ').slice(0,60);

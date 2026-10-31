@@ -1,4 +1,4 @@
-import {QUARTET_PIECES,QUARTET_TRAITS,quartetPiece,quartetLabel,quartetTraitWord} from '../public/quartet-pieces.js';
+import {QUARTET_PIECES,QUARTET_TRAITS,quartetPiece,quartetLabel,quartetTraitWord} from '../public/quartet-pieces.js?v=73056c009915';
 const lines=[...Array.from({length:4},(_,r)=>Array.from({length:4},(_,c)=>r*4+c)),...Array.from({length:4},(_,c)=>Array.from({length:4},(_,r)=>r*4+c)),[0,5,10,15],[3,6,9,12]];
 export const quartetCell=i=>String.fromCharCode(65+i%4)+(Math.floor(i/4)+1);
 export function quartetIndex(cell){if(Number.isInteger(cell)&&cell>=0&&cell<16)return cell;if(typeof cell==='string'&&/^[A-D][1-4]$/i.test(cell))return (Number(cell[1])-1)*4+cell.toUpperCase().charCodeAt(0)-65;throw Error('A1〜D4の空きマスを選んでください。');}
