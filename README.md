@@ -4,7 +4,7 @@
 
 ## 現在の状態
 
-ローカルで公開準備中です。このファイルの作成時点ではGitHubへのアップロード・公開を行っていません。公開候補リポジトリは https://github.com/POKAZINE/Emerald-Arcade-Pages 、通常の予定URLは https://pokazine.github.io/Emerald-Arcade-Pages/ です。実際のURLはGitHub Pagesの設定で確認してください。
+公開先リポジトリは https://github.com/POKAZINE/Emerald-Arcade-Pages 、公開URLは https://pokazine.github.io/Emerald-Arcade-Pages/ です。実際のURLはGitHub Pagesの設定で確認してください。
 
 ## 遊び方
 

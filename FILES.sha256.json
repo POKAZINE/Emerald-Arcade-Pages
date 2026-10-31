@@ -2,7 +2,7 @@
   "files": {
     ".github/workflows/pages.yml": "86f8cb2c6a040a5ad5997b6eefc5877d5caee21aaa5a313d87235e1865bb622d",
     ".gitignore": "22b90e3145bcffd30c74776fc01d3e5f811bae1da26aef717be3cf2f39b2625a",
-    "AGENTS.md": "682f178662173c02113219f9bd3f65945e770450c78ac02e62c91a1dd7d815a4",
+    "AGENTS.md": "2ecf1f6fcf3bbc8d5a5281d4576043e4f710d6381d49f32fdd9c9cceb3db455b",
     "check.mjs": "fb8f7261d7a401b14556ac61528c0ba489f08a663ac872111aa1fe2fd829921d",
     "dist/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "dist/browser/api.mjs": "d9ac163f0cf3375b1c08884ff1fe4fa49f7a4b9b5dcb8fb7d064c628baf71ab2",
@@ -98,6 +98,6 @@
     "dist/public/yacht-ui.js": "637df16107e530b9eac7535dd4df50c57c1f33328221882a16a4134f7fd7689f",
     "LICENSE.md": "63150ea059f496675c5b1daaca921c7814640b87e0fa5864adeae7ee4931e99a",
     "package.json": "fce2bc36c0edde87c120d5fcc670936889dd948ea8dbcd01a0a48401cf25da25",
-    "README.md": "0f039cd45efb253373172511dca00196b5900d59363d3cd00e352ddfaed3b0e2"
+    "README.md": "72fbcbfd5401080f7151185406500894ef51529eef5b8cbbaa1aac1307ae0818"
   }
 }
