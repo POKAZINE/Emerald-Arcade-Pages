@@ -1,4 +1,4 @@
-import {randomInt,randomUUID} from '../browser/crypto.mjs?v=9236314715d6';
+import {randomInt,randomUUID} from '../browser/crypto.mjs?v=0a21d58ed01e';
 export const GEISTER_RULES='6×6、各自よいおばけ4体・わるいおばけ4体。初期位置は自陣中央4列×2段。交互に1体を上下左右1マス移動し、移動先の相手を捕獲して正体を公開する。相手のよいおばけ4体を取る／自分のわるいおばけ4体を取らせる／自分のよいおばけを相手側の角から盤外へ脱出、のいずれかで勝ち。出口へ到達しただけでは勝たず、次の自分の手番でescapeを使う。斜め・自分の駒のいるマスへは進めない。';
 export const geisterSquare=i=>'ABCDEF'[i%6]+(Math.floor(i/6)+1);
 export const geisterIndex=s=>typeof s==='string'&&/^[A-F][1-6]$/i.test(s)?(Number(s[1])-1)*6+'ABCDEF'.indexOf(s[0].toUpperCase()):-1;

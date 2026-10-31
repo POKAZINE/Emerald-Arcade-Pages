@@ -1,6 +1,6 @@
-import {ghostSvg,ghostKindName} from './geister-pieces.js?v=9236314715d6';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=9236314715d6';
-import {bindResultShare} from './result-share.js?v=9236314715d6';
+import {ghostSvg,ghostKindName} from './geister-pieces.js?v=0a21d58ed01e';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=0a21d58ed01e';
+import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),tables=new Map();let audio;
 const square=i=>'ABCDEF'[i%6]+(Math.floor(i/6)+1),index=s=>(Number(s[1])-1)*6+'ABCDEF'.indexOf(s[0]);
 function unlock(){try{audio??=new AudioContext();audio.resume().catch(()=>{});}catch{}}

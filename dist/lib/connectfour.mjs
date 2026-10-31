@@ -1,4 +1,4 @@
-import {cfPieceColors,cfColor} from '../public/connectfour-colors.js?v=9236314715d6';
+import {cfPieceColors,cfColor} from '../public/connectfour-colors.js?v=0a21d58ed01e';
 export const CF_RULES='横7列・縦6段の立体四目ならべ。先手から交互に1個ずつ、1〜7の列を選んでコマを落とします。コマはその列の一番下の空きに入ります。満杯の列には置けません。縦・横・斜めに自分のコマが4個以上つながれば即勝利。42マスが埋まっても誰もそろわなければ引き分け。';
 export function initialConnectFour(){return {game:'connectfour',board:Array(42).fill(0),turn:1,winningLine:[],moveCount:0};}
 export function connectFourColumns(board){return Array.from({length:7},(_,i)=>i+1).filter(c=>!board[c-1]);}

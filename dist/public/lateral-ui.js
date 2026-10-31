@@ -1,5 +1,5 @@
-import {recoveryPanel,bindRecovery,conversationPanel,bindConversation} from './yacht-ui.js?v=9236314715d6';
-import {bindResultShare} from './result-share.js?v=9236314715d6';
+import {recoveryPanel,bindRecovery,conversationPanel,bindConversation} from './yacht-ui.js?v=0a21d58ed01e';
+import {bindResultShare} from './result-share.js?v=0a21d58ed01e';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),$=s=>document.querySelector(s),drafts=new Map();
 const labels={yes:'はい',no:'いいえ',irrelevant:'関係ありません',conditional:'その条件によります',unknown:'未設定・不明',clarify:'質問を分けてください',correct:'正解',partial:'まだ核心があります',incorrect:'もう一度考えてみよう',hint:'ヒント'};
 export function lateralArt(){return '<div class="lt-art" aria-hidden="true"><div class="lt-envelope"></div><div class="lt-paper"><span>CASE FILE</span><b>?</b><i></i><i></i></div><div class="lt-glass"></div></div><span class="yacht-art-label">A QUESTION OPENS THE DOOR.</span>';}

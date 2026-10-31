@@ -1,5 +1,5 @@
-import {CATEGORIES,scoreDice} from './yacht.mjs?v=9236314715d6';
-import {yachtTactics} from './yacht-tactics.mjs?v=9236314715d6';
+import {CATEGORIES,scoreDice} from './yacht.mjs?v=0a21d58ed01e';
+import {yachtTactics} from './yacht-tactics.mjs?v=0a21d58ed01e';
 export function yachtScoreReview(s,move){
  if(s.game!=='yacht'||s.status!=='playing'||s.rolls<1||s.rolls>=3||typeof move!=='string'||!move.startsWith('score:')||move.endsWith(':confirm'))return null;
  const category=move.slice(6);if(!CATEGORIES.some(([id])=>id===category)||s.sheets[s.turn][category]!==undefined)return null;
