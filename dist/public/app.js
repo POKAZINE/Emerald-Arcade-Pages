@@ -240,7 +240,11 @@ function updateSoundControls(){const f=$('#settings-form'),volume=Number(f.volum
 $('#effects-volume').oninput=updateSoundControls;
 $('#settings-form').sound.onchange=updateSoundControls;
 $('#effects-preview').onclick=()=>{const f=$('#settings-form');playSound({sound:f.sound.checked,volume:Number(f.volume.value)});};
-$('#settings-open').onclick=()=>{fillSettings();$('#settings-dialog').showModal();};
+async function loadSettingsPersonas(){const result=await api('connection','POST',{});rooms=result.rooms;$('#settings-personas').innerHTML=rooms.length?'<p class="small muted">登録済み '+rooms.length+'人</p><ul class="settings-persona-list">'+rooms.map(p=>'<li>'+esc(p.display_name)+'</li>').join('')+'</ul>':'<p class="small muted">まだ登録されていません。</p>';}
+$('#settings-open').onclick=()=>{fillSettings();$('#settings-persona-name').value='';$('#settings-persona-status').textContent='';$('#settings-personas').innerHTML='<p class="small muted">読み込み中…</p>';$('#settings-dialog').showModal();loadSettingsPersonas().catch(e=>$('#settings-persona-status').textContent=e.message);};
+async function addSettingsPersona(){const button=$('#settings-register-persona'),input=$('#settings-persona-name'),status=$('#settings-persona-status');button.disabled=true;status.textContent='';try{const result=await api('personas','POST',{name:input.value});input.value='';await loadSettingsPersonas();status.textContent=result.created?'ペルソナ名を追加・保存しました。対局開始時に選べます。':'同じ名前はすでに登録されています。';}catch(e){status.textContent=e.message;}finally{button.disabled=false;}}
+$('#settings-register-persona').onclick=addSettingsPersona;
+$('#settings-persona-name').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();if(!$('#settings-register-persona').disabled)addSettingsPersona();}};
 $$('[data-close]').forEach(b=>b.onclick=()=>b.closest('dialog').close());
 $('#settings-form').onsubmit=async e=>{e.preventDefault();try{await saveSettings();$('#settings-dialog').close();toast('設定を保存しました。');if(current)renderGame();else await route();}catch(e){$('#connection-status').textContent=e.message;}};
 $('#start-form').mode.onchange=async e=>{const nexus=e.target.value==='nexus';$('#room-picker').hidden=!nexus;$('#start-form').roomId.required=nexus;if(nexus)await loadStartRooms();};
