@@ -1,5 +1,5 @@
-import {randomInt} from '../browser/crypto.mjs?v=73056c009915';
-import {dfRank,dfSort,dfChoices,dfSelection,dfLabel} from '../public/daifugo-rules.js?v=73056c009915';
+import {randomInt} from '../browser/crypto.mjs?v=9236314715d6';
+import {dfRank,dfSort,dfChoices,dfSelection,dfLabel} from '../public/daifugo-rules.js?v=9236314715d6';
 export const DF_RULES='1対1・各15枚・3ラウンド。第3ラウンドの勝者が総合優勝。53枚（ジョーカー1枚）から配り、残り23枚は使わず非公開。通常3<4<…<K<A<2<ジョーカー。同数札は同じ枚数・階段は同じ枚数の階段でより強く出す。出せてもパス可能。空の場ではパス不可。相手がパスすると場が流れ最後に出した人から再開。8を実札として含む合法手で8切り（階段も対象）、スペード3単体はジョーカー単体を返して流せる（しばり中も可）。4枚以上の同数札で革命（ジョーカー代用可）、階段革命・11バックなし。ジョーカーを含む最終手は禁止。進行不能を防ぐためジョーカー1枚だけを残す手も事前に拒否。第1ラウンド先手はランダム。第2・3ラウンドは必ず1枚同時交換：敗者の通常順で最強の1枚と、勝者が交換前の手札から選ぶ1枚。交換後は敗者から開始。革命はラウンドごとに解除。しばりONなら同じスート構成のジョーカーなしの手が2回続くと場が流れるまで固定。ジョーカーは既存のしばりを代用可能だが新規成立させない。';
 export function dfDeck(){const a=Object.keys({s:1,h:1,d:1,c:1}).flatMap(s=>Array.from({length:13},(_,i)=>s+(i+1)));a.push('jk');for(let i=a.length-1;i;i--){const j=randomInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
 export function initialDaifugo(options={},quick=false){

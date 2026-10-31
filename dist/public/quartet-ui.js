@@ -1,6 +1,6 @@
-import {QUARTET_PIECES,quartetPieceSvg,quartetLabel,quartetWords,quartetPiece} from './quartet-pieces.js?v=73056c009915';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
-import {bindResultShare} from './result-share.js?v=73056c009915';
+import {QUARTET_PIECES,quartetPieceSvg,quartetLabel,quartetWords,quartetPiece} from './quartet-pieces.js?v=9236314715d6';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=9236314715d6';
+import {bindResultShare} from './result-share.js?v=9236314715d6';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tables=new Map();let audio;
 const coordinate=i=>String.fromCharCode(65+i%4)+(Math.floor(i/4)+1);

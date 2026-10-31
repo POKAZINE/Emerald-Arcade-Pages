@@ -1,5 +1,5 @@
-import {bindResultShare} from './result-share.js?v=73056c009915';
-import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
+import {bindResultShare} from './result-share.js?v=9236314715d6';
+import {captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=9236314715d6';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const suits={spades:'♠',hearts:'♥',diamonds:'♦',clubs:'♣'};
 export function playingCard(c){if(c.hidden)return '<span class="playing-card card-back" aria-label="伏せ札"><span>◇</span></span>';const rank=({1:'A',11:'J',12:'Q',13:'K'})[c.rank]||c.rank,suit=suits[c.suit];return `<span class="playing-card ${['hearts','diamonds'].includes(c.suit)?'red-suit':''}" aria-label="${esc(rank)} ${suit}"><span class="card-corner">${rank}<small>${suit}</small></span><span class="card-center">${suit}</span><span class="card-corner card-bottom">${rank}<small>${suit}</small></span></span>`;}

@@ -1,27 +1,27 @@
-import {browserApi} from '../browser/api.mjs?v=73056c009915';
-import {renderChatBridge} from './chat-bridge-ui.js?v=73056c009915';
-import {renderLiars,liarsRules,liarsArt} from './liars-ui.js?v=73056c009915';
-import {renderNineflags,nineflagsRules,nineflagsArt} from './nineflags-ui.js?v=73056c009915';
-import {renderQuartet,quartetRules,quartetArt} from './quartet-ui.js?v=73056c009915';
-import {APP_NAME,BANNER_SUBTITLE} from './branding.js?v=73056c009915';
-import {initPrivateLateral,resetPrivateLateralStart} from './lateral-private-ui.js?v=73056c009915';
-import {renderParaphrase,paraphraseRules,paraphraseArt} from './paraphrase-ui.js?v=73056c009915';
-import {renderBestfive,bestfiveRules,bestfiveArt} from './bestfive-ui.js?v=73056c009915';
-import {renderIndian,indianRules,indianArt} from './indian-ui.js?v=73056c009915';
-import {renderGeister,geisterRules,geisterArt} from './geister-ui.js?v=73056c009915';
-import {renderLateral,lateralRules,lateralArt} from './lateral-ui.js?v=73056c009915';
-import {renderLastcard,lastcardRules,lastcardArt} from './lastcard-ui.js?v=73056c009915';
-import {renderWordscale,wordscaleRules,wordscaleArt} from './wordscale-ui.js?v=73056c009915';
-import {renderMancala,mancalaRules,mancalaArt} from './mancala-ui.js?v=73056c009915';
-import {initConnectionSetup,setupHomeCard,bindSetupButtons,openConnectionSetup,restoreSetupHomeNotice} from './connection-setup-ui.js?v=73056c009915';
-import {renderDaifugo,daifugoRules,daifugoArt} from './daifugo-ui.js?v=73056c009915';
-import {renderTexas,texasRules,texasArt} from './texas-ui.js?v=73056c009915';
-import {bindResultShare} from './result-share.js?v=73056c009915';
-import {cfPieceColors,cfColor} from './connectfour-colors.js?v=73056c009915';
-import {renderConnectFour,connectFourRules,connectFourArt} from './connectfour-ui.js?v=73056c009915';
-import {renderHitBlow,hitBlowRules,hitBlowArt} from './hitblow-ui.js?v=73056c009915';
-import {renderBlackjack,blackjackRules,playingCard} from './blackjack-ui.js?v=73056c009915';
-import {renderYacht,yachtRules,dieFace,captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=73056c009915';
+import {browserApi} from '../browser/api.mjs?v=9236314715d6';
+import {renderChatBridge} from './chat-bridge-ui.js?v=9236314715d6';
+import {renderLiars,liarsRules,liarsArt} from './liars-ui.js?v=9236314715d6';
+import {renderNineflags,nineflagsRules,nineflagsArt} from './nineflags-ui.js?v=9236314715d6';
+import {renderQuartet,quartetRules,quartetArt} from './quartet-ui.js?v=9236314715d6';
+import {APP_NAME,BANNER_SUBTITLE} from './branding.js?v=9236314715d6';
+import {initPrivateLateral,resetPrivateLateralStart} from './lateral-private-ui.js?v=9236314715d6';
+import {renderParaphrase,paraphraseRules,paraphraseArt} from './paraphrase-ui.js?v=9236314715d6';
+import {renderBestfive,bestfiveRules,bestfiveArt} from './bestfive-ui.js?v=9236314715d6';
+import {renderIndian,indianRules,indianArt} from './indian-ui.js?v=9236314715d6';
+import {renderGeister,geisterRules,geisterArt} from './geister-ui.js?v=9236314715d6';
+import {renderLateral,lateralRules,lateralArt} from './lateral-ui.js?v=9236314715d6';
+import {renderLastcard,lastcardRules,lastcardArt} from './lastcard-ui.js?v=9236314715d6';
+import {renderWordscale,wordscaleRules,wordscaleArt} from './wordscale-ui.js?v=9236314715d6';
+import {renderMancala,mancalaRules,mancalaArt} from './mancala-ui.js?v=9236314715d6';
+import {initConnectionSetup,setupHomeCard,bindSetupButtons,openConnectionSetup,restoreSetupHomeNotice} from './connection-setup-ui.js?v=9236314715d6';
+import {renderDaifugo,daifugoRules,daifugoArt} from './daifugo-ui.js?v=9236314715d6';
+import {renderTexas,texasRules,texasArt} from './texas-ui.js?v=9236314715d6';
+import {bindResultShare} from './result-share.js?v=9236314715d6';
+import {cfPieceColors,cfColor} from './connectfour-colors.js?v=9236314715d6';
+import {renderConnectFour,connectFourRules,connectFourArt} from './connectfour-ui.js?v=9236314715d6';
+import {renderHitBlow,hitBlowRules,hitBlowArt} from './hitblow-ui.js?v=9236314715d6';
+import {renderBlackjack,blackjackRules,playingCard} from './blackjack-ui.js?v=9236314715d6';
+import {renderYacht,yachtRules,dieFace,captureConversation,conversationPanel,bindConversation,userNote,clearUserNote,recoveryPanel,bindRecovery} from './yacht-ui.js?v=9236314715d6';
 const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Relative estimates for a full persona game; revise together as the catalog grows.
@@ -248,11 +248,7 @@ $('#settings-persona-name').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault()
 $$('[data-close]').forEach(b=>b.onclick=()=>b.closest('dialog').close());
 $('#settings-form').onsubmit=async e=>{e.preventDefault();try{await saveSettings();$('#settings-dialog').close();toast('設定を保存しました。');if(current)renderGame();else await route();}catch(e){$('#connection-status').textContent=e.message;}};
 $('#start-form').mode.onchange=async e=>{const nexus=e.target.value==='nexus';$('#room-picker').hidden=!nexus;$('#start-form').roomId.required=nexus;if(nexus)await loadStartRooms();};
-async function loadStartRooms(preferredId){const button=$('#load-rooms'),select=$('#start-form').roomId;button.disabled=true;select.disabled=true;$('#start-error').textContent='';try{const result=await api('connection','POST',{});rooms=result.rooms;select.innerHTML='<option value="">'+(rooms.length?'相手を選んでください':'下の欄でペルソナ名を登録してください')+'</option>'+rooms.map(r=>`<option value="${esc(r.room_id)}">${esc(r.display_name)}</option>`).join('');select.value=typeof preferredId==='string'?preferredId:result.lastRoomId||'';}catch(e){rooms=[];select.innerHTML='<option value="">登録済みの相手を読み込めませんでした</option>';$('#start-error').textContent=e.message;}finally{button.disabled=false;select.disabled=false;}}
-async function addPersona(){const button=$('#register-persona'),input=$('#persona-name');button.disabled=true;$('#start-error').textContent='';try{const result=await api('personas','POST',{name:input.value});await loadStartRooms(result.persona.room_id);input.value='';toast(result.created?'ペルソナ名を登録しました。':'登録済みのペルソナを選びました。');}catch(e){$('#start-error').textContent=e.message;}finally{button.disabled=false;}}
-$('#register-persona').onclick=addPersona;
-$('#persona-name').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();if(!$('#register-persona').disabled)addPersona();}};
-$('#load-rooms').onclick=loadStartRooms;
+async function loadStartRooms(){const select=$('#start-form').roomId;select.disabled=true;$('#start-error').textContent='';try{const result=await api('connection','POST',{});rooms=result.rooms;select.innerHTML='<option value="">'+(rooms.length?'相手を選んでください':'設定からペルソナ名を登録してください')+'</option>'+rooms.map(r=>`<option value="${esc(r.room_id)}">${esc(r.display_name)}</option>`).join('');select.value=rooms.some(p=>p.room_id===result.lastRoomId)?result.lastRoomId:rooms[0]?.room_id||'';}catch(e){rooms=[];select.innerHTML='<option value="">登録済みの相手を読み込めませんでした</option>';$('#start-error').textContent=e.message;}finally{select.disabled=false;}}
 $('#start-form').lcPlayers.onchange=()=>{const f=$('#start-form'),three=f.lcPlayers.value==='3';f.lcFirst.options[3].disabled=!three;if(!three&&f.lcFirst.value==='bot')f.lcFirst.value='random';};
 $('#start-form').onsubmit=async e=>{e.preventDefault();const f=e.target,button=$('button[type=submit]',f);button.disabled=true;try{const b=Object.fromEntries(new FormData(f));if(b.game==='liars')b.firstPlayer=$('#ld-first').value;delete b.ldFirst;if(b.game==='nineflags'){b.tactics=b.playStyle==='quick'?false:f.nfTactics.checked;b.firstPlayer=f.nfFirst.value;}delete b.nfTactics;delete b.nfFirst;if(b.game==='quartet')b.firstGiver=f.qtFirst.value;delete b.qtFirst;if(b.game==='paraphrase')b.roleMode=f.ppRole.value;delete b.ppRole;if(b.game==='bestfive'){b.genre=f.bfGenre.value;b.firstSetter=f.bfFirst.value;}delete b.bfGenre;delete b.bfFirst;if(b.game==='geister')b.firstPlayer=f.gtFirst.value;delete b.gtFirst;if(b.game==='lateral'){b.genre=f.ltGenre.value;b.difficulty=f.ltDifficulty.value;}delete b.ltGenre;delete b.ltDifficulty;if(b.game==='lastcard'){b.playerCount=Number(f.lcPlayers.value);b.stacking=f.lcStack.checked;b.multiPlay=f.lcMulti.checked;b.firstPlayer=f.lcFirst.value;}delete b.lcPlayers;delete b.lcStack;delete b.lcMulti;delete b.lcFirst;if(b.game==='blackjack')b.splitEnabled=b.playStyle!=='quick'&&f.bjSplit.checked;delete b.bjSplit;if(b.game==='mancala'){b.capture=f.mcCapture.checked;b.winCondition=f.mcWinCondition.value;}delete b.mcCapture;delete b.mcWinCondition;if(b.game==='daifugo')b.rulesConfig={binding:f.dfBinding.checked,stairs:f.dfStairs.checked};delete b.dfBinding;delete b.dfStairs;if(b.game==='texas')b.handLimit=Number(f.handLimit.value);if(b.game==='hitblow')b.allowDuplicates=f.hitblowAnswerMode.value==='repeated';delete b.hitblowAnswerMode;b.personaName=rooms.find(r=>r.room_id===b.roomId)?.display_name;const s=await api('games','POST',b);if(s.game==='lastcard')try{sessionStorage.setItem('lc-fresh:'+s.id,'1');}catch{}$('#start-dialog').close();navigate(`game/${s.id}`);}catch(e){$('#start-error').textContent=e.message;}finally{button.disabled=false;}};
 $('#confirm-end').onclick=async()=>{try{await api(`games/${current.id}/end`,'POST',{});$('#confirm-dialog').close();await updateCurrent();}catch(e){toast(e.message);}};
