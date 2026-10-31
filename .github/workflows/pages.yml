@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '22'
       - name: Check browser files
-        run: npm run check
+        run: npm run check && npm test
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

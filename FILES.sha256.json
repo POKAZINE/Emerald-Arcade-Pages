@@ -1,15 +1,15 @@
 {
   "files": {
-    ".github/workflows/pages.yml": "86f8cb2c6a040a5ad5997b6eefc5877d5caee21aaa5a313d87235e1865bb622d",
+    ".github/workflows/pages.yml": "a00098e6d41297f4daeb3771eaafee5408b49503df02d1927c2a3723e7e9d83a",
     ".gitignore": "22b90e3145bcffd30c74776fc01d3e5f811bae1da26aef717be3cf2f39b2625a",
     "AGENTS.md": "2ecf1f6fcf3bbc8d5a5281d4576043e4f710d6381d49f32fdd9c9cceb3db455b",
     "check.mjs": "fb8f7261d7a401b14556ac61528c0ba489f08a663ac872111aa1fe2fd829921d",
     "dist/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "dist/browser/api.mjs": "d9ac163f0cf3375b1c08884ff1fe4fa49f7a4b9b5dcb8fb7d064c628baf71ab2",
+    "dist/browser/api.mjs": "16ca8b9eb2d6d83c58939caf64ea3a2e0ad75b1fd64243394b7f96c46417cf88",
     "dist/browser/crypto.mjs": "79e178809350536fe977ae51731134deb1e7c4da483020c5c317fc497bbbabec",
     "dist/browser/engine.mjs": "6d51cb6514f0d2c8abc0a54fccbeeb18652cb75f18fa6516a967bcc422aa8fe5",
     "dist/browser/store.mjs": "8e48af3b40cdd1baed4124022c03fdd6a1404f5b49b7d2ab60c78b0ee9a2a612",
-    "dist/index.html": "716e462e43a09b405cccf3cb2896dd7989811f1fabd5380996cfb44a2b53f822",
+    "dist/index.html": "c734160a714ee456b5b6d8207ffb675fd578267e2e97fb2203caf10372c676c0",
     "dist/lib/bestfive-topics.mjs": "42d541aa060f51f151b7e9327c08388fb1d626cc9c1720dfe56bc9914261492d",
     "dist/lib/bestfive.mjs": "6fcb6ec00d0479aa3954c40c531bd79691c9e812cb41ecc637343b887eb37018",
     "dist/lib/blackjack.mjs": "23fea7c7c0840d6a2e962cab93514db6f222f61b2bc0800629c9ff11ade8f412",
@@ -35,6 +35,7 @@
     "dist/lib/notification-metrics.mjs": "be95dcf9ee176bbc584e6266ce27c37226c040b1f1fcffb1448ac39e0461f2ce",
     "dist/lib/paraphrase-words.mjs": "defa64f4422d548409b8a94d797bdf0e9988c5dceb61de867770a4fe8e58ad6d",
     "dist/lib/paraphrase.mjs": "53504fa459d5cea69695c4076f561e2ad54630f2b2614a733ea2932dab7cd9bf",
+    "dist/lib/personas.mjs": "dc7a671445adcaf32c4046b1f71182a6f8d9172d73aa39a5eaeef1da5930c36f",
     "dist/lib/quartet.mjs": "0724a69743b4b45d1d346902296b35a9a9213040072fdf7dc83a4e88248c16dd",
     "dist/lib/reversi.mjs": "a152c35c1e90ce1d5270b6de0cdcf1349e7f22420138df5ab47bb41a6b3a2261",
     "dist/lib/texas.mjs": "4a828336f1a6499b3e633096815b0cf4205171377fda6d24f4e4f8aed0c87358",
@@ -43,7 +44,7 @@
     "dist/lib/yacht-score-review.mjs": "749100d677cbd60ddb51bce83d186a90780cc4f24d1e71935dc27dee9ca0a0bf",
     "dist/lib/yacht-tactics.mjs": "ae7cbc9ffb663324b08e1f1b2f1132cb4ee1e4d4e5db2e80a7ea868f976beb4a",
     "dist/lib/yacht.mjs": "ce46d40082fa55b8afb26b99e8c34823da705b1f0cc3ff9684657540cbec77ee",
-    "dist/public/app.js": "57ec6c3e62e96647b11546fb0a7120d48f0525bd364be1b60ab61e6da5657b56",
+    "dist/public/app.js": "c9e178c0e28ae6169c8197e09f74794f18e99bcbb2854a8d094a07924bc3934a",
     "dist/public/bestfive-ui.js": "68c9b56dc5fbabd7c27f1a36f6bcbdbede469d6a197e80431d606aaf04095a71",
     "dist/public/bestfive.css": "49ace8b21e7c196f7020e1c4279a5cfa9e5f866131c619808ccbba79d8249e1f",
     "dist/public/blackjack-ui.js": "6a6fdee280252993e0fffb8b01ed06fe8e64262a082bbd33d65f6c913ea6283c",
@@ -63,7 +64,7 @@
     "dist/public/geister-ui.js": "789e37144c6aba96eff7a5d4af63b84ac9f14ba90664eba7b73105483c901d53",
     "dist/public/geister.css": "0a6d10e2655ad891fde41c1ad3193be7663b2530582026fa5375232035a4426d",
     "dist/public/hitblow-ui.js": "782e438861d8a053524f73621c7e7ea787327c46cb627debdf7e45063e856505",
-    "dist/public/index.html": "930c224c7b46102bdd2797910398215930d4146fe7fddf7f4352333b141f71c3",
+    "dist/public/index.html": "95c9463d9687d4392e3a5ca0a686d6d14cc8b657bbf2fbaccca0ac88add5dd9f",
     "dist/public/indian-ui.js": "a599eb65b84be814deaca7e3d5dccaa56775acdf6a6330b8e70df20aa34523c4",
     "dist/public/indian.css": "17d17ddb4dd59f388c0bf83698738547ffd78982d235ad0b532d1e210d97ac7e",
     "dist/public/lastcard-events.js": "2500af54f5a832686bc19bf282f99b68fa93fa878c8a2ad085bdf40d010858a0",
@@ -97,7 +98,8 @@
     "dist/public/wordscale.css": "c335fee352520408fc70b8b1a9f54c5a301b304336a77a17c42166da0713a354",
     "dist/public/yacht-ui.js": "637df16107e530b9eac7535dd4df50c57c1f33328221882a16a4134f7fd7689f",
     "LICENSE.md": "63150ea059f496675c5b1daaca921c7814640b87e0fa5864adeae7ee4931e99a",
-    "package.json": "fce2bc36c0edde87c120d5fcc670936889dd948ea8dbcd01a0a48401cf25da25",
-    "README.md": "72fbcbfd5401080f7151185406500894ef51529eef5b8cbbaa1aac1307ae0818"
+    "package.json": "a7878a0ff4182bc4c4a06c93f778644fb4668ff0c00edd115b7d932b75d6306f",
+    "README.md": "5fbf5596d9b40962a69b851cac58caa5fb6c748d0fac2da664b5e5316dca7a12",
+    "tests/personas.test.mjs": "033d53a8c05336fc45171a2b4c985ce9b21ac2c68071b448e9f15ac31efa05f1"
   }
 }

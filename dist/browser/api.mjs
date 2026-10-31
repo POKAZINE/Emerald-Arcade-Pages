@@ -1,4 +1,5 @@
 import {store,config,createGame,moveGame,view,rawGameContext,executeTool,patchDelivery,personaActionRequired,makeChatPrompt,parseChatReply,geisterIdentities,cfValidateColors,practiceMove} from './engine.mjs';
+import {registerPersona} from '../lib/personas.mjs';
 const settings=()=>Object.fromEntries(['title','subtitle','theme','sound','reducedMotion','volume','showExpressions','connectFourColors'].map(k=>[k,config[k]]));
 let queue=Promise.resolve();
 async function dispatch(route,method,b){
@@ -6,7 +7,10 @@ async function dispatch(route,method,b){
  if(route==='settings'){
   if(method==='POST'){for(const key of Object.keys(b))if(!['theme','sound','reducedMotion','volume','showExpressions'].includes(key))throw Error('この設定は変更できません。');if(b.theme!==undefined&&!['light','dark','system'].includes(b.theme))throw Error('テーマを確認してください。');if(b.volume!==undefined&&(!Number.isFinite(b.volume)||b.volume<0||b.volume>1))throw Error('音量は0〜1で指定してください。');for(const key of ['sound','reducedMotion','showExpressions'])if(b[key]!==undefined&&typeof b[key]!=='boolean')throw Error('設定を確認してください。');Object.assign(config,b);store.saveSettings(config);}return settings();
  }
- if(route==='connection')return {rooms:[{room_id:'chatgpt',display_name:'ChatGPT'},{room_id:'claude',display_name:'Claude'},{room_id:'gemini',display_name:'Gemini'},{room_id:'other',display_name:'その他のAI'}],lastRoomId:config.lastPersona?.roomId||'chatgpt'};
+ if(route==='personas'&&method==='POST'){
+  const result=registerPersona(config.personas||[],b.name);config.personas=result.profiles;store.saveSettings(config);return {persona:result.persona,created:result.created};
+ }
+ if(route==='connection')return {rooms:config.personas||[],lastRoomId:config.lastPersona?.roomId||(config.personas||[])[0]?.room_id||''};
  if(route==='records/export')return store.exportData();
  if(route==='games'){if(method==='POST'){const created=createGame(b);return practiceResult(created.id);}return store.all().map(view);}
  const match=route.match(/^games\/([\w-]+)(?:\/(history|move|end|chat-prompt|chat-reply|identities|appearance|notify-result))?$/);if(!match)throw Error('この操作は公開版では使用しません。');

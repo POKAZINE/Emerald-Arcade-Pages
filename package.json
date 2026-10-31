@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node check.mjs"
+    "check": "node check.mjs",
+    "test": "node --test tests/personas.test.mjs"
   },
   "engines": {
     "node": ">=22.13.0"
